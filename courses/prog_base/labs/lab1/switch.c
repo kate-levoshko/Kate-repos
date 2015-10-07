@@ -12,11 +12,9 @@ int max (int a, int b){
 int power (int a, int b){
 
 }
-int sizeOfNum (int a, int b){
 
-}
 int main() {
-    int opval = 3, aval = 1, bval = 2;
+    int opval = 1, aval = 12, bval = 9;
     int resultVal;
 
     resultVal = exec(opval, aval, bval);
@@ -26,13 +24,14 @@ int main() {
 }
 // copy the code below to the answers files and add #include <math.h> at the beginning
 int exec(int op, int a, int b) {
-   int result, HELP;
+   int result, HELP, size_of_data;
    double (PI)=(3,141592653589793238462643);
 
    if (op<0){
        HELP=a;
        a=b;
        b=HELP;
+       op=abs(op);
    }
     else{
 
@@ -70,16 +69,48 @@ int exec(int op, int a, int b) {
        result=(min(a,b));
        break;
     case 10:
-        result=(sizeOfNum(a, b));
+          switch(abs(b) % 8) {
+      case 0:
+        size_of_data=(sizeof(char));
+        break;
+      case 1:
+        size_of_data=(sizeof(signed char));
+        break;
+      case 2:
+        size_of_data=(sizeof(short));
+        break;
+      case 3:
+        size_of_data=(sizeof(unsigned int));
+        break;
+      case 4:
+        size_of_data=(sizeof(long));
+        break;
+      case 5:
+        size_of_data=(sizeof(unsigned long long));
+        break;
+      case 6:
+        size_of_data=(sizeof(float));
+        break;
+      case 7:
+        size_of_data=(sizeof(double));
+        break;
+    }
+    result=(abs(a)*size_of_data);
+
         break;
     case 11:
+        if (a==0){
+            result=0;
+        }
+            else
         result=(2*PI*cos((3*a*b)/a));
         break;
+        default:
     if (op < 100) {
-       default:
         result=(op % abs(a + 1)) + (op % abs(b + 1));
     }
           else
+            if (op>=100)
             result=(-1);
             break;
        }
