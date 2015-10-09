@@ -14,7 +14,7 @@ int power (int a, int b){
 }
 
 int main() {
-    int opval = 1, aval = 12, bval = 9;
+    int opval = -1, aval = 11, bval = 9;
     int resultVal;
 
     resultVal = exec(opval, aval, bval);
@@ -31,9 +31,8 @@ int exec(int op, int a, int b) {
        HELP=a;
        a=b;
        b=HELP;
-       op=abs(op);
+       op=(-op);
    }
-    else{
 
    switch(op){
    case 0:
@@ -114,7 +113,7 @@ int exec(int op, int a, int b) {
             result=(-1);
             break;
        }
-    }
+
 
     return result;
 }
