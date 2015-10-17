@@ -10,8 +10,8 @@ int binary[64];
 double mantissa=0,result;
 long long num_bin;
 
-if (number < 0) sign = -1;
-else sign = 1;
+if (number < 0) sign = 1;
+else sign = 0;
 
 for (i = 63; i >= 0; i--)
 {
@@ -31,23 +31,22 @@ exponent = exponent + binary[i] * pow(2, j);
 for (i = 12, j = -1; i <= 63; i++, j--)
 {
 mantissa = mantissa + binary[i] * pow(2, j);
-
 }
-if (1 <= exponent <= 2046)
+if (0 < exponent < 2047)
 result = pow(-1, sign)*(1 + mantissa)*pow(2, exponent - 1023);//Normalized form
-else if (exponent = 0)
+else if (exponent = 0 && mantissa != 0)
 result = pow(-1, sign)*mantissa*pow(2, -1022);//Denormalized form
 else if ((exponent = 0) && (mantissa = 0)){
-if (sign == -1)
+if (sign == 1)
 result = -0;
 else
 result = 0;
 }
 else if (exponent= 2047){
 if ((mantissa == 0) && (sign = 1))
-result = +INFINITY;
-else
 result = -INFINITY;
+else
+result = +INFINITY;
 }
 else if ((exponent = 2047) && (mantissa != 0))
 result = NAN;
@@ -56,5 +55,5 @@ else result = sign*pow(2,exponent-1023) *(1+mantissa);
 return result;
 }
 int main(){
-printf("%.325llf", long2double(-4620000000000000000LL));
+printf("%.325llf", long2double(4620000000000000000LL));
 }
