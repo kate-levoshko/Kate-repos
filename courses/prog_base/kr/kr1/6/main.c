@@ -9,9 +9,9 @@ int main(){
         scanf("%i", &arr[i]);
     }
     for (i=0; i<n; i++){
-          if (i%2=o)
-        newArr[i]=arr[i];
+        newArr[i]=arr[i+2];
         printf("%i", newArr[i]);
+
     }
  return 0;
 }
