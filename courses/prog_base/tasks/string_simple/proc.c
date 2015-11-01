@@ -12,10 +12,11 @@ char * process(char * resultStr, const char * textLines[],
                    char *ptr=NULL;
                    const char *text;
                    int max=0, index=-1;
-                   text=textLines[i];
+
 
                         for (i=0; i<linesNum; i++){
-                                ptr=strtok(text," ");
+                                text=textLines[i];
+                                ptr=strtok(text, " ");
                                 sum += atoi(ptr);
                                 while (ptr!=NULL){
                                    ptr=strtok(NULL," ");
@@ -28,7 +29,8 @@ char * process(char * resultStr, const char * textLines[],
                             max=sum;
                             index = i;
                         }
-                                ptr=strtok(text[index]," ");
+                        text = textLines[index];
+                                ptr=strtok(text," ");
                                 while (ptr!=NULL){
                                    P *= atoi(ptr);
                                    ptr=strtok(NULL," ");
