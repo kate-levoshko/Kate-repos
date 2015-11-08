@@ -6,37 +6,35 @@
 */
 
 
-char * process(char * resultStr, const char * textLines[],
-               int linesNum, const char * extraStr) {
-                   int sum=0, i, j, P=1;
-                   char *ptr=NULL;
-                   const char *text;
-                   int max=0, index=-1;
+/*gcc - std = c89 - pedantic - errors*/
+char * process(char * resultStr, const char * textLines[], int linesNum, const char * extraStr) {
+int i, j, sum = 0, maxSum = 0, num = 0, maxIndex = 0, k = 1;
+
+static char res[100];
+
+for (i = 0; i < linesNum; i++){
+
+sum = 0;
+for (j = 0; j < strlen(textLines[i]); j++){
+if (isdigit(*(textLines[i] + j))){
+sum = sum + (*(textLines[i] + j) - '0');
 
 
-                        for (i=0; i<linesNum; i++){
-                                text=textLines[i];
-                                ptr=strtok(text, " ");
-                                sum += atoi(ptr);
-                                while (ptr!=NULL){
-                                   ptr=strtok(NULL," ");
-                                   sum += atoi(ptr);
-                                }
-
-                        }
-                        if (sum>max)
-                        {
-                            max=sum;
-                            index = i;
-                        }
-                        text = textLines[index];
-                                ptr=strtok(text," ");
-                                while (ptr!=NULL){
-                                   P *= atoi(ptr);
-                                   ptr=strtok(NULL," ");
-                                }
-                                sprintf(resultStr,"%i %i", index, P/strlen(text[index]));
-                                return 0;
-                   }
+}
+if (maxIndex < sum){
+maxIndex = i;
+for (j = 0; j < strlen(textLines[i]); j++){
+if (isdigit(*(textLines[i] + j))){
+k = (k * (*(textLines[i] + j) - '0'))/strlen(textLines[i]);
 
 
+}
+}
+
+}
+}
+
+sprintf(res, "%d %d ", maxSum, k);
+return res;
+}
+}
