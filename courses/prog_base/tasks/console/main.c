@@ -11,7 +11,7 @@ int changeColour (COORD pos){
         case 24 ... 33:colour = BACKGROUND_RED | BACKGROUND_BLUE;
         SetConsoleTextAttribute(hConsole, colour);
             break;
-        case 34 ... 69: colour = FOREGROUND_RED;
+        case 34 ... 69: colour = BACKGROUND_RED;
         SetConsoleTextAttribute(hConsole, colour);
             break;
         default: colour = BACKGROUND_RED | BACKGROUND_GREEN;
@@ -74,10 +74,10 @@ COORD upBord(COORD pos, int uBorder){
 int main(void){
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD pos;
+	int i;
 	int lBorder = 0, dBorder = 24, rBorder = 79, uBorder = 1;
 	pos.X = 79;
 	pos.Y = 0;
-	int i;
 	for (i = 1; i < 14; i++){
        	pos=leftBord(pos, lBorder);
         lBorder++;
