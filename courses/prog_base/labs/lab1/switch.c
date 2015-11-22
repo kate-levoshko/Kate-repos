@@ -3,18 +3,10 @@
 #include <math.h>
 
 int exec(int, int, int);
-int min (int a, int b){
 
-}
-int max (int a, int b){
-
-}
-int power (int a, int b){
-
-}
 
 int main() {
-    int opval = -1, aval = 11, bval = 9;
+    int opval = 4, aval = 10, bval = 5;
     int resultVal;
 
     resultVal = exec(opval, aval, bval);
@@ -25,7 +17,6 @@ int main() {
 // copy the code below to the answers files and add #include <math.h> at the beginning
 int exec(int op, int a, int b) {
    int result, HELP, size_of_data;
-   double (PI)=(3,141592653589793238462643);
 
    if (op<0){
        HELP=a;
@@ -54,7 +45,7 @@ int exec(int op, int a, int b) {
        result=(abs(a));
        break;
    case 6:
-       result=(power(a,b));
+       result=(pow(a,b));
        break;
    case 7:
    case 13:
@@ -102,7 +93,7 @@ int exec(int op, int a, int b) {
             result=0;
         }
             else
-        result=(2*PI*cos((3*a*b)/a));
+        result=(2*M_PI*cos((3*a*b)/a));
         break;
         default:
     if (op < 100) {

@@ -5,7 +5,7 @@
 double calc(double, double, double);
 
 int main() {
-    double xval = 1.0, yval = 3.754, zval = 1;
+    double xval = -7, yval = 1, zval = 9;
     double result;
 
     result = calc(xval, yval, zval);
@@ -18,12 +18,14 @@ int main() {
 
 double calc(double x, double y, double z) {
    double a,a0,a1,a2;
-   a0=pow(x,x+1)/pow(x-y,1/z);
-   a1=y/(2*abs(x+y));
-   a2=pow(2+sin(y),cos(x)/z+abs(x-y));
-   a=a0+a1+a2;
    if ((z==0)||(x-y==0)||(x+y==0)){
      return nan("");
    }
-   else return a;
+   else{
+   a0=pow(x,x+1)/pow(x-y,1/z); // бесконечность
+   a1=y/(2*abs(x+y));
+   a2=pow(2+sin(y),cos(x)/z+abs(x-y));
+   a=a0+a1+a2;
+   }
+   return a;
 }
