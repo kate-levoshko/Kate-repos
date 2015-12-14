@@ -38,5 +38,3 @@ char * process(char * resultStr, const char * textLines[],
                                 sprintf(resultStr,"%i %i", index, P/strlen(text[index]));
                                 return 0;
                    }
-
-

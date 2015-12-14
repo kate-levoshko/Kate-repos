@@ -14,10 +14,6 @@ int main() {
 }
 int is2(int modmin){
     return log(modmin)/log(2)-(int)(log(modmin)/log(2))==0;
-    if ()
-        return 1;
-    else
-        return 0;
 }
 // copy the code below to the answers files and add #include <math.h> at the beginning
 int satisfies(int a, int b, int c) {
@@ -58,7 +54,11 @@ int satisfies(int a, int b, int c) {
    }
     if (a>=0 && b>=0 && c>=0){
             max1=max(max(a,b),c);
+<<<<<<< HEAD
             min2=min(min(a,b),c)
+=======
+            min2=min(min(a,b),c);
+>>>>>>> results
                 if ((max1)-(min2)>32)
         return 1;
     else

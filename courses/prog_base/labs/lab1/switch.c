@@ -104,7 +104,5 @@ int exec(int op, int a, int b) {
             result=(-1);
             break;
        }
-
-
     return result;
 }

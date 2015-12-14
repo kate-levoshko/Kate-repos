@@ -28,4 +28,3 @@ double calc(int n, int m){
     }
     return result;
 }
-
