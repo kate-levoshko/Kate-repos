@@ -1,5 +1,5 @@
-#ifndef NETWORK_H_INCLUDED
-#define NETWORK_H_INCLUDED
+#ifndef POST_H_INCLUDED
+#define POST_H_INCLUDED
 
 #include <stdio.h>
 #include <stdlib.h>

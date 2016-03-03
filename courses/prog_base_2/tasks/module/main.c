@@ -5,7 +5,9 @@ int main(){
 
     arrayPost_t post = arrayPost_create();
 
-    addPost(post, 3, "Cola on the Politecknichna Streen is closed");
+    addPost(post, 0, "Cola on the Politecknichna Streen is closed");
+    addPost(post, 1, "NADYA ZALILA MEMASIKI NA KPICHAN");
+    addPost(post, 2, "CATS ^^");
     printf("%s\n",getPostByIndex(post,0));
     printf("%s\n",getPostByIndex(post,1));
     printf("%s\n",getPostByIndex(post,2));
