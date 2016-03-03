@@ -19,7 +19,7 @@ arrayPost_t * arrayPost_create(){
     return p;
 }
 
-void addPost(arrayPost_t self, int postPosition, char * data){
+void post_addPost(arrayPost_t self, int postPosition, char * data){
     int i;
     self->posts[self->postAmount] = (post_t)malloc(sizeof(struct post_s));
     self->posts[self->postAmount++]->data = (char*)malloc(MAX_AMOUNT_OF_SYMBOLS * sizeof(char));
@@ -30,7 +30,7 @@ void addPost(arrayPost_t self, int postPosition, char * data){
     strcpy(self->posts[postPosition]->data,data);
 }
 
-void removePost(arrayPost_t self, int postPosition){
+void post_removePost(arrayPost_t self, int postPosition){
     int i;
     for(i = postPosition + 1;  i < self->postAmount; i++){
         strcpy(self->posts[i - 1]->data, self->posts[i]->data);
@@ -41,14 +41,14 @@ void removePost(arrayPost_t self, int postPosition){
     self->postAmount--;
 }
 
-int getSizeOfPostList(arrayPost_t self, int postPosition){
+int post_getSizeOfPostList(arrayPost_t self, int postPosition){
     if(postPosition > Network_getNumOfPosts(self)){
         return -1;
     }
     return self->posts[postPosition]->reposts;
 }
 
-int getPostIndex(arrayPost_t self){ // function that return index of Post with max amount of reposts
+int post_getPostIndex(arrayPost_t self){ // function that return index of Post with max amount of reposts
     int max = randomRepostAmount(self,0);
     int index = 0;
     int i;
@@ -60,7 +60,7 @@ int getPostIndex(arrayPost_t self){ // function that return index of Post with m
     }
     return index;
 }
-void randomRepostAmount(arrayPost_t self){
+void post_randomRepostAmount(arrayPost_t self){
     srand((unsigned)time(NULL));
     int i;
     for(i = 0; i < self->postAmount; i++){
@@ -68,45 +68,13 @@ void randomRepostAmount(arrayPost_t self){
     }
 }
 
-int getPostAmount(arrayPost_t self){
+int post_getPostAmount(arrayPost_t self){
     return self->postAmount;
 }
 
-char * getPostByIndex(arrayPost_t self, int postPosition){
+char * post_getPostByIndex(arrayPost_t self, int postPosition){
     if(postPosition > getPostAmount(self)){
         return -1;
     }
-    return self->posts[postPosition]->data ;
+    return self->posts[postPosition]->data;
 }
-
-/*void Network_remove(arrayPost_t self){
-    int i;
-    for (i = 0; i< self->postAmount; i++){
-        free(self->posts[i]->data);
-    }
-    for (i = 0; i< self->postAmount; i++){
-        free(self->posts[i]);
-    }
-    free(self);
-}*/
-/*
-void Network_addPost(arrayPost_t self, char * data){
-    self->posts[self->postAmount] = (post_t)malloc(sizeof(struct post_s));
-    self->posts[self->postAmount]->data = (char*)malloc(MAX_SIZE_OF_POST * sizeof(char));
-    strcpy(self->posts[self->postAmount]->data,data);
-    self->postAmount++;
-}
-*/
-
-/*arrayPost_t Network_getArrayWithParameter(arrayPost_t self, int minNumOfReposts){
-    arrayPost_t tmp = Network_create();
-    int i;
-    for(i = 0; i < self->postAmount; i++){
-        if(Network_getNumOfReposts(self,i) > minNumOfReposts){
-            Network_addPost(tmp, self->posts[i]->data);
-            tmp->posts[tmp->postAmount - 1]->numOfReposts = Network_getNumOfReposts(self,i);
-        }
-    }
-    return tmp;
-}
-*/

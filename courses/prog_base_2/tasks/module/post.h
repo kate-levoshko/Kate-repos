@@ -12,12 +12,12 @@ typedef struct arrayPost_s * arrayPost_t;
 arrayPost_t arrayPost_create();
 
 
-void addPost(arrayPost_t self, int postPosition, char * data);
-void removePost(arrayPost_t self, int postPosition);
-int getSizeOfPostList(arrayPost_t self, int postPosition);
-int getPostIndex(arrayPost_t self);
-void randomRepostAmount(arrayPost_t self);
-int getPostAmount(arrayPost_t self){
-char * getPostByIndex(arrayPost_t self, int postPosition);
+void post_addPost(arrayPost_t self, int postPosition, char * data);
+void post_removePost(arrayPost_t self, int postPosition);
+int post_getSizeOfPostList(arrayPost_t self, int postPosition);
+int post_getPostIndex(arrayPost_t self);
+void post_randomRepostAmount(arrayPost_t self);
+int post_getPostAmount(arrayPost_t self){
+char * post_getPostByIndex(arrayPost_t self, int postPosition);
 
 #endif // NETWORK_H_INCLUDED
