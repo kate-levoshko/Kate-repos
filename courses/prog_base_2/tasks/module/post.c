@@ -1,80 +1,103 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "post.h"
+/*  Масив структур даних типу Пост у соцмережі.
+	Можна вставляти елементи на будь-яку позицію у списку і
+	видаляти елементи,
+	отримувати розмір списку.
+	Додати функції отримання вказівника на пост із найбільшою кількістю репостів та
+	отримання масиву постів, у яких кількість репостів більша за задане число.
+*/
 
-#define MAX_AMOUNT_OF_POSTS 100
-#define MAX_AMOUNT_OF_SYMBOLS 200
-
-struct arrayPost_s{
-    post_t posts[MAX_AMOUNT_OF_POSTS];
-    int postAmount;
+struct list_s{
+	int amount;
+	enum ListError status;
+	struct post_s * p[MAX_AMOUNT_OF_POSTS];
 };
 
 struct post_s{
-    char * data;
-    int reposts;
+	int reposts;
+	char text[MAX_AMOUNT_OF_SYMBOLS];
 };
 
-arrayPost_t * arrayPost_create(){
-    arrayPost_t p = (arrayPost_t)malloc(sizeof(struct arrayPost_s));
-    p->postAmount = 0;
-    return p;
+// constructor
+list_t * list_new(){
+	list_t * l = (list_t * )malloc(sizeof(struct list_s));
+	l->amount = 0;
+	return l;
+}
+ // destructor
+void list_free(list_t * self){
+	for (int i = 0; i < self->amount; i++){
+		free(self->p[i]);
+	}
+	free(self);
 }
 
-void post_addPost(arrayPost_t self, int postPosition, char * data){
-    int i;
-    self->posts[self->postAmount] = (post_t)malloc(sizeof(struct post_s));
-    self->posts[self->postAmount++]->data = (char*)malloc(MAX_AMOUNT_OF_SYMBOLS * sizeof(char));
-    for (i = self->postAmount - 1; i >= postPosition + 1; i--){
-        strcpy(self->posts[i]->data, self->posts[i - 1]->data);
-        self->posts[i]->reposts = self->posts[i - 1]->reposts;
-    }
-    strcpy(self->posts[postPosition]->data,data);
+enum ListError list_getStatus(list_t * self){
+	return self->status;
 }
 
-void post_removePost(arrayPost_t self, int postPosition){
-    int i;
-    for(i = postPosition + 1;  i < self->postAmount; i++){
-        strcpy(self->posts[i - 1]->data, self->posts[i]->data);
-        self->posts[i - 1]->reposts = self->posts[i]->reposts;
-    }
-    free(self->posts[self->postAmount - 1]->data);
-    free(self->posts[self->postAmount - 1]);
-    self->postAmount--;
+void list_setPostAt(list_t * self, int index, char * text){
+	if (index < 0 || index > MAX_AMOUNT_OF_POSTS){
+		self->status = WRONG_INDEX;
+		return 0;
+	}
+	self->p[self->amount] = (struct post_s *)malloc(sizeof(struct post_s));
+	for (int i = self->amount; i > index; i--){
+		self->p[i] = self->p[i - 1];
+	}
+	strcpy(self->p[index]->text, text);
+	self->amount++;
+	self->status = LIST_OK;
 }
 
-int post_getSizeOfPostList(arrayPost_t self, int postPosition){
-    if(postPosition > Network_getNumOfPosts(self)){
-        return -1;
-    }
-    return self->posts[postPosition]->reposts;
+void list_postRemove(list_t * self, int index){
+	if (index < 0 || index > MAX_AMOUNT_OF_POSTS){
+		self->status = WRONG_INDEX;
+		return 0;
+	}
+	else if (self->amount == 0){
+		self->status = LIST_EMPTY;
+		return 0;
+	}
+
+	for (int i = self->p[index]; i < self->amount; i++){
+		self->p[i - 1] = self->p[i];
+	}
+	self->amount--;
 }
 
-int post_getPostIndex(arrayPost_t self){ // function that return index of Post with max amount of reposts
-    int max = randomRepostAmount(self,0);
-    int index = 0;
-    int i;
-    for(i = 1; i < self->postAmount; i++){
-        if(randomRepostAmount(self,i) > max){
-            max = randomRepostAmount(self,i);
-            index = i;
-        }
-    }
-    return index;
-}
-void post_randomRepostAmount(arrayPost_t self){
-    srand((unsigned)time(NULL));
-    int i;
-    for(i = 0; i < self->postAmount; i++){
-        self->posts[i]->reposts = rand() % 100;
-    }
+int list_getSize(list_t * self){
+	return self->amount;
+	self->status = LIST_OK;
 }
 
-int post_getPostAmount(arrayPost_t self){
-    return self->postAmount;
+int list_getIndex(list_t * self){
+	int max = self->p[0];
+	int index = -1;
+	for (int i = 0; i < self->amount; i++){
+		if (self->p[i] > max){
+			max = self->p[i];
+			index = i;
+		}
+	}
+	return index;
 }
 
-char * post_getPostByIndex(arrayPost_t self, int postPosition){
-    if(postPosition > getPostAmount(self)){
-        return -1;
-    }
-    return self->posts[postPosition]->data;
+list_t * list_listOfPosts(list_t * self, int amountOfReposts){
+	if (amountOfReposts < 0){
+		self->status = INCORRECT_AMOUNT;
+		return 0;
+	}
+	list_t * newList = list_new();
+	int k = 0;
+	for (int i = 0; i < self->amount + 1; i++){
+		if (self->p[i]->reposts > amountOfReposts){
+			list_setPostAt(newList, k, self->p[i]->text);
+			k++;
+		}
+	}
+	return list_new();
 }

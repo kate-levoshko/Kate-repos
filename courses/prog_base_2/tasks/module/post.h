@@ -1,23 +1,27 @@
 #ifndef POST_H_INCLUDED
 #define POST_H_INCLUDED
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
+#define MAX_AMOUNT_OF_POSTS 100
+#define MAX_AMOUNT_OF_SYMBOLS 400
 
-typedef struct post_s * post_t;
-typedef struct arrayPost_s * arrayPost_t;
+typedef struct list_s list_t;
 
-arrayPost_t arrayPost_create();
+enum ListError {
+	LIST_OK,
+	LIST_OVERFLOW,
+	LIST_EMPTY,
+	WRONG_INDEX,
+	INCORRECT_AMOUNT
+};
 
+list_t * list_new(void);  // constructor
 
-void post_addPost(arrayPost_t self, int postPosition, char * data);
-void post_removePost(arrayPost_t self, int postPosition);
-int post_getSizeOfPostList(arrayPost_t self, int postPosition);
-int post_getPostIndex(arrayPost_t self);
-void post_randomRepostAmount(arrayPost_t self);
-int post_getPostAmount(arrayPost_t self){
-char * post_getPostByIndex(arrayPost_t self, int postPosition);
+void list_free(list_t * self);  // destructor
 
-#endif // NETWORK_H_INCLUDED
+void list_setPostAt(list_t * self, int index, char * text); // function, that add post
+void list_postRemove(list_t * self, int index); // function, that delete post
+int list_getSize(list_t * self); // function, that get the amount of posts
+int list_getIndex(list_t * self); // function, that get index of post with max amount of reposts
+list_t * listOfPosts(list_t * self, int numOfRepost); // list of posts, where the amount of reposts > than value  
+
+#endif // POST_H_INCLUDED
