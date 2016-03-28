@@ -12,7 +12,7 @@
 #include "mutex.h"
 
 typedef struct text_s{
-	char * strings[MAX_AMOUNT_OF_LETTERS];
+	char * strings[AMOUNT_OF_STRINGS];
 	char * str;
 	int number;
 	mutex_t * mu;

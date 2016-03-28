@@ -15,6 +15,7 @@ int main(){
 
 	data.mu = mutex_new();
 	data.number = 0;
+	data.str = data.strings[0];
 
 	strcpy(data.strings[0], "word1");
 	strcpy(data.strings[1], "word2");
@@ -27,9 +28,10 @@ int main(){
 	strcpy(data.strings[8], "word9");
 	strcpy(data.strings[9], "Ruslan");
 
-	reader_t * setter1 = new_reader(&data);
+	reader_t setter1 = new_reader(&data);
 	writer_t getter1 = new_writer(&data);
 	writer_t getter2 = new_writer(&data);
+
 	reader_delete(setter1);
 	writer_delete(getter1);
 	writer_delete(getter2);
