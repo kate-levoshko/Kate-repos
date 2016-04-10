@@ -1,0 +1,37 @@
+[
+	{
+		"name": "Lina",
+		"surname": "Dovhaniuk",
+		"dateStartYear": "2013-09-15",
+		"jobExperience": 2.5,
+		"salary": 3000,
+		"musicPrefer":{
+					"perfomer": "Valentin Strikalo",
+					"favouriteSong": "Gori"
+		},
+	},
+
+	{
+		"name": "Olya",
+		"surname": "Yashan",
+		"dateStartYear": "2010-07-23",
+		"jobExperience": 6.7,
+		"salary": 2500,
+		"musicPrefer":{
+					"perfomer": "Maks Korzh",
+					"favouriteSong": "Motilek"
+		},
+	},
+
+	{
+		"name": "Karina",
+		"surname": "Chumak",
+		"dateStartYear": "2009-04-15",
+		"jobExperience": 7.0,
+		"salary": 2500,
+		"musicPrefer":{
+					"perfomer": "Vanya From 420",
+					"favouriteSong": "LoveYou"
+		},
+	},
+]
