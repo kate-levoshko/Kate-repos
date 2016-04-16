@@ -1,147 +1,137 @@
+#include <stdio.h>
 #include <winsock2.h>
 #include <windows.h>
-
-#pragma comment(lib, "ws2_32.lib")
 
 #define NO_FLAGS_SET 0
 #define PORT 80
 #define MAXBUFLEN 20480
 
-#define SYMBOL_AMOUNT 100
-
-SOCKET createSoc (){
-    SOCKET soc;
-    soc = socket(AF_INET , SOCK_STREAM , 0);
-    if(soc == INVALID_SOCKET)
-    {
-        exit(EXIT_FAILURE);
-        printf("Could not create socket : %d" , WSAGetLastError());
-    }
-    printf("Socket created.\n");
-    return soc;
+SOCKET createSocket(){
+    SOCKET recvSocket;
+    recvSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	if(recvSocket != INVALID_SOCKET){
+	    return recvSocket;
+	}
+	printf("ERROR: socket unsuccessful\r\n");
+    exit(EXIT_FAILURE);
 }
 
-SOCKADDR_IN newSocketAddr(const char * nameHost){
+SOCKADDR_IN newSocketAddr(const char * hostName){
      char * IP;
      struct hostent * remoteHost;
-     remoteHost = gethostbyname(nameHost);
+     remoteHost = gethostbyname(hostName);
      IP = inet_ntoa(*(struct in_addr *)*remoteHost->h_addr_list);
-     SOCKADDR_IN recvSockAddr;
-     memset(&recvSockAddr, 0, sizeof(recvSockAddr));
-     recvSockAddr.sin_port=htons(PORT);
-     recvSockAddr.sin_family=AF_INET;
-     recvSockAddr.sin_addr.s_addr= inet_addr(IP);
-     return recvSockAddr;
+     SOCKADDR_IN recvSocketAddr;
+     memset(&recvSocketAddr, 0, sizeof(recvSocketAddr));
+     recvSocketAddr.sin_port = htons(PORT);
+     recvSocketAddr.sin_family = AF_INET;
+     recvSocketAddr.sin_addr.s_addr = inet_addr(IP);
+     return recvSocketAddr;
 }
 
-void connectToServer(SOCKET s, SOCKADDR_IN recvSockAddr){
-    if(connect(s,(SOCKADDR*)&recvSockAddr,sizeof(SOCKADDR_IN)) == SOCKET_ERROR)
-    {
-       puts("Connect error");
-       closesocket(s);
-       WSACleanup();
-       exit(EXIT_FAILURE);
+void connectingWithServer(SOCKADDR_IN recvSocketAddr, SOCKET recvSocket){
+    if(connect(recvSocket,(SOCKADDR*)&recvSocketAddr,sizeof(SOCKADDR_IN)) == SOCKET_ERROR){
+        printf("ERROR: socket could not connect\r\n");
+        closesocket(recvSocket);
+        WSACleanup();
+        exit(EXIT_FAILURE);
     }
-     puts("Connected");
 }
 
-void sendInquiry(SOCKET s, const char * nameHost, char * content){
-    char request[SYMBOL_AMOUNT];
-    sprintf(request, "GET /var/6?%s HTTP/1.1\r\nHost:%s\r\n\r\n", content, nameHost);  // add Host header with host_name value
-    send(s, request, strlen(request), 0);
+void sendRequest(SOCKET recvSocket, const char * hostName, char * content){
+    char request[100];
+    sprintf(request, "GET /var/6?%s HTTP/1.1\r\nHost:%s\r\n\r\n", content, hostName);
+    send(recvSocket, request, strlen(request), 0);
 }
 
-void sendResultInquiry(SOCKET s, const char * nameHost, char * content){
-    char result[SYMBOL_AMOUNT];
-    char request[SYMBOL_AMOUNT];
-    sprintf(result, "result=%d", maxSum(content));
-    sprintf(request, "POST /var/6 HTTP/1.0\r\n" "Host: %s\r\n"  "Content length: %d\r\n\r\n" "%s\r\n", nameHost, strlen(result), result);
-    send(s, request, strlen(request), 0);
+void sendResultRequest(SOCKET recvSocket, const char * hostName, char * content){
+    char result[100];
+    char request[100];
+    sprintf(result, "result=%d", ColumnWithMaxSum(content));
+    sprintf(request, "POST /var/6 HTTP/1.0\r\n"
+		"Host: %s\r\n"
+		"Content-length: %d\r\n\r\n"
+		"%s\r\n", hostName, strlen(result), result);
+    send(recvSocket, request, strlen(request), 0);
 }
 
-void recieveAnswer(SOCKET s, char * buffer, int status){
+void recieveAnswer(SOCKET recvSocket, char * buffer, int status){
     int numrcv = 0;
-    numrcv = recv(s, buffer, MAXBUFLEN, NO_FLAGS_SET);
-    if (numrcv == SOCKET_ERROR)
-    {
+    numrcv = recv(recvSocket, buffer, MAXBUFLEN, NO_FLAGS_SET);
+    if (numrcv == SOCKET_ERROR){
         printf("ERROR: recvfrom unsuccessful\r\n");
-        status = closesocket(s);
+        status = closesocket(recvSocket);
         if(status == SOCKET_ERROR)
 			printf("ERROR: closesocket unsuccessful\r\n");
-            status = WSACleanup();
+        status = WSACleanup();
         if (status == SOCKET_ERROR)
 			printf("ERROR: WSACleanup unsuccessful\r\n");
         exit(EXIT_FAILURE);
     }
-
-int maxSum(char * mat){
-    int amount = 0;
-    int maxVal = 0;
+}
+int ColumnWithMaxSum(char * matrix){
+    int count = 0;
+    int max = 0;
     int maxIndex;
-    for(int i = 0; i <= strlen(mat); i++){
-        if( *(mat + i) == '\0' || *(mat + i) == '\n')
-            amount++;
+    for(int i = 0; i <= strlen(matrix); i++){
+        if( *(matrix + i) == '\0' || *(matrix + i) == '\n')
+            count++;
     }
-
-    int sumCol[amount];
-
-    for(int i = 0; i < amount; i++){
-        sumCol[i] = 0;
+    int sumColumn[count];
+    for(int i = 0; i < count; i++){
+        sumColumn[i] = 0;
     }
-    for(int i = 0; i < amount; i++){
-        for(int k = 0; k < amount; k++){
-            sumCol[k] += strtol(mat, &mat, 10);
+    for(int i = 0; i < count; i++){
+        for(int k = 0; k < count; k++){
+            sumColumn[k] += strtol(matrix, &matrix, 10);
         }
     }
-    for(int i = 0; i < amount; i++){
-        if(sumCol[i] > maxVal){
-            maxVal = sumCol[i];
+    for(int i = 0; i < count; i++){
+        if(sumColumn[i] > max){
+            max = sumColumn[i];
             maxIndex = i;
         }
     }
     return maxIndex;
 }
 
-    int main(){
-        WSADATA Data;
-        SOCKADDR_IN recvSockAddr;
-        SOCKET s;
-        SOCKET newSocket();
-        int status;
-        const char * nameHost = "pb-homework.appspot.com";
-        char buffer[MAXBUFLEN];
-        memset(buffer,0,MAXBUFLEN);
-        status = WSAStartup(MAKEWORD(2, 2), &Data);
-
-        if(status != 0)
-        {
-            printf("ERROR: WSAStartup unsuccessful\r\n");
-            return 0;
-        }
-
-        recvSockAddr = newSocketAddr(nameHost);
-        s = newSocket();
-        connectToServer(s, recvSockAddr);
-
-        sendInquiry(s, nameHost, "");
-        recieveAnswer(s, buffer, status);
-
-        char * secret = strstr(buffer, "secret");
-        int lenJump = strlen(buffer) - strlen(secret);
-
-        sendInquiry(s, nameHost, secret);
-        recieveAnswer(s, buffer, status);
-
-        char * content = buffer + lenJump;
-        printf("%s\r\n",content);
-
-        sendResultInquiry(s, nameHost, content);
-        printf("Result: %d\n", maxSum(content));
-
-        memset(buffer, 0, MAXBUFLEN);
-
-        recieveAnswer(s, buffer, status);
-        printf("%s\n", buffer);
+int main(void) {
+    WSADATA data;
+    SOCKADDR_IN recvSocketAddr;
+    SOCKET recvSocket;
+    int status;
+    const char * hostName = "pb-homework.appspot.com";
+    char buffer[MAXBUFLEN];
+    memset(buffer,0,MAXBUFLEN);
+    status = WSAStartup(MAKEWORD(2, 2), &data);
+    if(status != 0)
+    {
+        printf("ERROR: WSAStartup unsuccessful\r\n");
         return 0;
     }
+
+    recvSocketAddr = newSocketAddr(hostName);
+    recvSocket = createSocket();
+    connectingWithServer(recvSocketAddr, recvSocket);
+
+    sendRequest(recvSocket, hostName, "");
+    recieveAnswer(recvSocket, buffer, status);
+
+	char * secret = strstr(buffer, "secret");
+	int len_jump = strlen(buffer) - strlen(secret);
+
+	sendRequest(recvSocket, hostName, secret);
+    recieveAnswer(recvSocket, buffer, status);
+
+    char * content = buffer + len_jump;
+    printf("%s\r\n",content);
+
+    sendResultRequest(recvSocket, hostName, content);
+    printf("Result: %d\n", ColumnWithMaxSum(content));
+
+    memset(buffer, 0, MAXBUFLEN);
+
+    recieveAnswer(recvSocket, buffer, status);
+    printf("%s\n", buffer);
+    return 0;
 }
