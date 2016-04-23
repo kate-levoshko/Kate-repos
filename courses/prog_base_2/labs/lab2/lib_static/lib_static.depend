@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1461404965 source:c:\users\katya\desktop\lab2\lib_static\main.c
+	"queue.h"
+
+1461363024 c:\users\katya\desktop\lab2\lib_static\queue.h
+	<stdio.h>
+	<stdlib.h>
+
