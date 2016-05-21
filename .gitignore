@@ -1,4 +1,4 @@
-# Windows image file caches
+﻿# Windows image file caches
 Thumbs.db
 ehthumbs.db
 
@@ -43,7 +43,7 @@ Temporary Items
 .apdisk
 courses/prog_base/kr/kr1/5/5.cbp
 courses/prog_base/kr/kr1/5/5.layout
-*.cbp
+
 courses/prog_base/tasks/long2double/bin/Debug/ПЕТЯ.exe
 courses/prog_base/labs/lab1/condition.c
 courses/prog_base/tasks/long2double/repr.layout
@@ -66,8 +66,6 @@ courses/prog_base/labs/lab1/switch.c
 courses/prog_base/labs/lab1/condition.c
 courses/prog_base/tasks/hello_world/hello.exe
 courses/prog_base/labs/lab1/condition.c
-*.c
 *.layout
 *.exe
-*.c
 courses/prog_base/labs/lab1/math.c

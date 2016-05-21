@@ -1,0 +1,18 @@
+﻿Build started 21.05.2016 14:26:21.
+     1>Project "C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tests\test_1\kr_1\kr_1\kr_1.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt listener.c main.c
+         main.c
+         listener.c
+         Generating Code...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tests\test_1\kr_1\Debug\kr_1.lib" /NOLOGO Debug\listener.obj
+         Debug\main.obj
+         Debug\radio.obj
+         Debug\test.obj
+         kr_1.vcxproj -> C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tests\test_1\kr_1\Debug\kr_1.lib
+     1>Done Building Project "C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tests\test_1\kr_1\kr_1\kr_1.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.64

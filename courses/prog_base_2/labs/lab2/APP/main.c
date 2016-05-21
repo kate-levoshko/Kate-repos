@@ -20,8 +20,7 @@ const char * userChoice();
 void printQueue(queue_t * self, int sum);
 
 
-int main()
-{
+int main(){
     queue_t * q1 = queue_createQueue();
     const char * dllName = userChoice();
     dynamic_t * dll = dynamic_init(dllName);

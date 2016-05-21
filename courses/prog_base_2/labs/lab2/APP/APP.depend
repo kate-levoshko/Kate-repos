@@ -10,3 +10,14 @@
 	<stdio.h>
 	<stdlib.h>
 
+1461407827 source:c:\users\katya\documents\github\kate-repos\courses\prog_base_2\labs\lab2\app\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+	"queue.h"
+
+1461357190 c:\users\katya\documents\github\kate-repos\courses\prog_base_2\labs\lab2\app\queue.h
+	<stdio.h>
+	<stdlib.h>
+
