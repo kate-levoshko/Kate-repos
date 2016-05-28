@@ -36,7 +36,7 @@ radio_t * db_getRadioLead(db_t * self, int id){
 			break;
 		}
 		else if (SQLITE_ROW == rc){
-			list_add(list, rc);
+			list_add(list, SQLITE_ROW);
 		}
 	}
 	sqlite3_finalize(stmt);

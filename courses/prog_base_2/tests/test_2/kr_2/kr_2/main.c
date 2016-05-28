@@ -58,8 +58,7 @@ int main(void){
 
 	list_t * radioLead = list_new();
 
-	while (1)
-	{
+	while (1){
 		client = socket_accept(server);
 		socket_read(client, buffer, sizeof(buffer));
 
@@ -81,7 +80,7 @@ int main(void){
 			}
 			else
 			{
-				server_notFound(client);
+				//server_notFound(client);
 			}
 		}
 	}
@@ -91,6 +90,6 @@ int main(void){
 	list_free(radioLead);
 	db_free(db);
 	lib_free();
-	getchar();
+
 	return 0;
 }

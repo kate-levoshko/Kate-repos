@@ -12,10 +12,8 @@
 
 typedef struct db_s db_t;
 
-db_t * db_new(const char * dbFile); // constructor
-void db_free(db_t * self); //dectructor
-
-// CRUD 
+db_t * db_new(const char * dbFile); 
+void db_free(db_t * self); 
 
 radio_t * db_getRadioLead(db_t * self, int id);
 int db_insertRadioLead(db_t * self, radio_t * radio);
