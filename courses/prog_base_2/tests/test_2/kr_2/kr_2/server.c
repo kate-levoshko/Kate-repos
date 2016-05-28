@@ -51,8 +51,6 @@ http_request_t http_request_parse(const char * const request){
 void server_info(socket_t * client)
 {
 	char homeBuf[1024];
-
-
 	cJSON * st = cJSON_CreateObject();
 
 	cJSON_AddItemToObject(st, "student", cJSON_CreateString("Kate Levoshko"));

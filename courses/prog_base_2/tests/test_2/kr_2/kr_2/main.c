@@ -4,11 +4,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "socket.h"
 #include "sqlite3.h"
 #include "sqlite3ext.h"
-#include "server.h"
-#include "cJSON.h"
+
+#include "serverDB.h"
 
 #include <jansson.h>
 #include "CURL\include\curl\curl.h"
@@ -16,6 +15,8 @@
 #include <winsock2.h>
 #include <windows.h>
 
+// task1
+/*
 int main()
 {
 	lib_init();
@@ -41,20 +42,55 @@ int main()
 	}
 	return 0;
 }
-/*
-
-int main(void){
-	json_t* test = json_pack("{s:s}", "KATYA", "SDAST");
-	puts(json_dumps(test, JSON_INDENT(3)));
-
-	CURL *curl;
-	CURLcode res;
-
-	curl_global_init(CURL_GLOBAL_ALL);
-
-	curl = curl_easy_init();
-
-	getchar();
-}
 */
 
+int main(void){
+	lib_init();
+	socket_t * server = socket_new();
+	socket_bind(server, 5000);
+	socket_listen(server);
+
+	char buffer[10240];
+	socket_t * client = NULL;
+
+	const char * dbFile = "radio.db";
+	db_t * db = db_new(dbFile);
+
+	list_t * radioLead = list_new();
+
+	while (1)
+	{
+		client = socket_accept(server);
+		socket_read(client, buffer, sizeof(buffer));
+
+		if (strlen(buffer) != 0){
+			printf(">> Got request:\n%s\n", buffer);
+			http_request_t request = http_request_parse(buffer);
+
+			if (strcmp(request.uri, "/info") == 0)
+			{
+				server_info(client, &request);
+			}
+			else if (strcmp(request.uri, "/database") == 0)
+			{
+				server_db(client, &request, db, radioLead);
+			}
+			else if (strncmp(request.uri, "/files/", 7) == 0)
+			{
+
+			}
+			else
+			{
+				server_notFound(client);
+			}
+		}
+	}
+
+	socket_free(client);
+	socket_free(server);
+	list_free(radioLead);
+	db_free(db);
+	lib_free();
+	getchar();
+	return 0;
+}
