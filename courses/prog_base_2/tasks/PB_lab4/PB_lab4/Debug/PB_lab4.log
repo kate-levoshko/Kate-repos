@@ -1,0 +1,17 @@
+﻿Build started 22.05.2016 15:49:23.
+     1>Project "C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tasks\PB_lab4\PB_lab4\PB_lab4.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\libs\zlib-1.2.5\include" /I"C:\Program Files (x86)\libs\libxml2-2.7.8.win32\include" /I"C:\Program Files (x86)\libs\iconv-1.9.2.win32\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt ..\..\..\..\..\..\..\..\Desktop\xml\xml\radio.c main.c
+         main.c
+         radio.c
+     1>c:\users\katya\desktop\xml\xml\radio.c(28): warning C4133: 'initializing' : incompatible types - from 'radio_t *' to 'radioLead_t *'
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tasks\PB_lab4\Debug\PB_lab4.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\libs\zlib-1.2.5\lib" /LIBPATH:"C:\Program Files (x86)\libs\libxml2-2.7.8.win32\lib" /LIBPATH:"C:\Program Files (x86)\libs\iconv-1.9.2.win32\lib" "C:\Program Files (x86)\libs\zlib-1.2.5\lib\zdll.lib" "C:\Program Files (x86)\libs\zlib-1.2.5\lib\zlib.lib" "C:\Program Files (x86)\libs\libxml2-2.7.8.win32\lib\libxml2.lib" "C:\Program Files (x86)\libs\libxml2-2.7.8.win32\lib\libxml2_a.lib" "C:\Program Files (x86)\libs\libxml2-2.7.8.win32\lib\libxml2_a_dll.lib" "C:\Program Files (x86)\libs\iconv-1.9.2.win32\lib\iconv.lib" "C:\Program Files (x86)\libs\iconv-1.9.2.win32\lib\iconv_a.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tasks\PB_lab4\Debug\PB_lab4.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tasks\PB_lab4\Debug\PB_lab4.lib" /MACHINE:X86 Debug\radio.obj
+         Debug\main.obj
+         PB_lab4.vcxproj -> C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tasks\PB_lab4\Debug\PB_lab4.exe
+     1>Done Building Project "C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tasks\PB_lab4\PB_lab4\PB_lab4.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.70

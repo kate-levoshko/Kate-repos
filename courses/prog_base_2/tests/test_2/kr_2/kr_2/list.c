@@ -4,7 +4,7 @@
 #include "list.h"
 
 struct list_s {
-	void * mas[100];
+	void * arr[100];
 	int size;
 };
 
@@ -16,29 +16,29 @@ list_t * list_new() {
 
 void list_free(list_t * self) {
 	for (int i = 0; i < self->size; i++){
-		free(self->mas[i]);
+		free(self->arr[i]);
 	}
 	free(self);
 }
 
 void list_add(list_t * self, void * info) {
 	if (self->size < 100) {
-		self->mas[self->size] = info;
+		self->arr[self->size] = info;
 		self->size++;
 	}
 }
 
 void * list_remove(list_t * self, int index) {
-	void * del = self->mas[index];
+	void * del = self->arr[index];
 	for (int i = index; i < self->size - 1; i++) {
-		self->mas[i] = self->mas[i + 1];
+		self->arr[i] = self->arr[i + 1];
 	}
 	self->size--;
 	return del;
 }
 
 void * list_get(list_t * self, int index) {
-	return self->mas[index];
+	return self->arr[index];
 }
 
 int list_size(list_t * self) {

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<radio>
+  
+  <radioLead>
+    <name>Lina</name>
+    <surname>Dovhaniuk</surname>
+    <dateStartYear>2013-09-15</dateStartYear>
+    <jobExperience>2.5</jobExperience>
+    <salary>3000</salary>
+    <musicPrefer perfomer="Valentin Strikalo">
+      <favouriteSong>Gori</favouriteSong>
+    </musicPrefer>
+  </radioLead>
+
+  <radioLead>
+    <name>Olya</name>
+    <surname>Yashan</surname>
+    <dateStartYear>2010-07-23</dateStartYear>
+    <jobExperience>6.7</jobExperience>
+    <salary>2500</salary>
+    <musicPrefer perfomer="Maks Korzh">
+      <favouriteSong>Motilek</favouriteSong>
+    </musicPrefer>
+  </radioLead>
+
+  <radioLead>
+    <name>Karina</name>
+    <surname>Chumak</surname>
+    <dateStartYear>2009-04-15</dateStartYear>
+    <jobExperience>7.0</jobExperience>
+    <salary>2500</salary>
+    <musicPrefer perfomer="Vanya From 420">
+      <favouriteSong>LoveYou</favouriteSong>
+    </musicPrefer>
+  </radioLead>
+  
+</radio>
+

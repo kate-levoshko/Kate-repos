@@ -50,7 +50,7 @@ http_request_t http_request_parse(const char * const request){
 
 void server_info(socket_t * client)
 {
-	char homeBuf[1024];
+	char buf[1024];
 	cJSON * st = cJSON_CreateObject();
 
 	cJSON_AddItemToObject(st, "student", cJSON_CreateString("Kate Levoshko"));
@@ -58,10 +58,10 @@ void server_info(socket_t * client)
 	cJSON_AddItemToObject(st, "variant", cJSON_CreateNumber(31));
 	char * text = cJSON_Print(st);
 
-	sprintf(homeBuf,
+	sprintf(buf,
 		"HTTP/1.1 404 \n"
 		"Content-Type: text/html/application/json\n"
-		"Content-Length: %zu\n"
+		"Content-Length: %u\n"
 		"\n%s", strlen(text), text);
-	socket_write(client, homeBuf, sizeof(homeBuf));
+	socket_write(client, buf, sizeof(buf));
 }

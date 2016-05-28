@@ -1,0 +1,29 @@
+﻿Build started 28.05.2016 15:51:38.
+     1>Project "C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tests\test_2\kr_2\kr_2\kr_2.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Ijansson\ /ICURL\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt serverDB.c
+         serverDB.c
+     1>c:\users\katya\documents\github\kate-repos\courses\prog_base_2\tests\test_2\kr_2\kr_2\serverdb.c(7): warning C4047: 'function' : 'int' differs in levels of indirection from 'list_t *'
+     1>c:\users\katya\documents\github\kate-repos\courses\prog_base_2\tests\test_2\kr_2\kr_2\serverdb.c(7): warning C4024: 'db_getRadioLead' : different types for formal and actual parameter 2
+     1>c:\users\katya\documents\github\kate-repos\courses\prog_base_2\tests\test_2\kr_2\kr_2\serverdb.c(13): warning C4133: 'function' : incompatible types - from 'cJSON *' to 'list_t *'
+     1>c:\users\katya\documents\github\kate-repos\courses\prog_base_2\tests\test_2\kr_2\kr_2\serverdb.c(14): warning C4133: 'function' : incompatible types - from 'cJSON *' to 'list_t *'
+     1>c:\users\katya\documents\github\kate-repos\courses\prog_base_2\tests\test_2\kr_2\kr_2\serverdb.c(15): warning C4133: 'function' : incompatible types - from 'cJSON *' to 'list_t *'
+     1>c:\users\katya\documents\github\kate-repos\courses\prog_base_2\tests\test_2\kr_2\kr_2\serverdb.c(16): warning C4133: 'function' : incompatible types - from 'cJSON *' to 'list_t *'
+     1>c:\users\katya\documents\github\kate-repos\courses\prog_base_2\tests\test_2\kr_2\kr_2\serverdb.c(17): warning C4133: 'function' : incompatible types - from 'cJSON *' to 'list_t *'
+     1>c:\users\katya\documents\github\kate-repos\courses\prog_base_2\tests\test_2\kr_2\kr_2\serverdb.c(18): warning C4133: 'function' : incompatible types - from 'cJSON *' to 'list_t *'
+     1>c:\users\katya\documents\github\kate-repos\courses\prog_base_2\tests\test_2\kr_2\kr_2\serverdb.c(19): warning C4133: 'function' : incompatible types - from 'cJSON *' to 'list_t *'
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tests\test_2\kr_2\Debug\kr_2.exe" /INCREMENTAL /NOLOGO jansson_d.lib libsqlite3.lib CURL\lib\libcurl_imp.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tests\test_2\kr_2\Debug\kr_2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tests\test_2\kr_2\Debug\kr_2.lib" /MACHINE:X86 Debug\cJSON.obj
+         Debug\db.obj
+         Debug\list.obj
+         Debug\main.obj
+         Debug\radio.obj
+         Debug\server.obj
+         Debug\serverDB.obj
+         Debug\socket_win.obj
+         kr_2.vcxproj -> C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tests\test_2\kr_2\Debug\kr_2.exe
+     1>Done Building Project "C:\Users\Katya\Documents\GitHub\Kate-repos\courses\prog_base_2\tests\test_2\kr_2\kr_2\kr_2.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.66

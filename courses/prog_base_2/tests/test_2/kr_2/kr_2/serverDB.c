@@ -1,7 +1,7 @@
 #include "serverDB.h"
 
 void server_db(socket_t * client, http_request_t * req, db_t * db, list_t * radioLead){
-	char buffer[10240] = "";
+	char buffer[5000] = "";
 
 	if (strcmp(req->method, "GET") == 0){
 		db_getRadioLead(db, radioLead);
@@ -38,7 +38,7 @@ void server_notFound(socket_t * client)
     sprintf(buffer,
             "HTTP/1.1 404 Not Found\n"
             "Content-Type: text/html\n"
-            "Content-Length: %zu\n"
+            "Content-Length: %u\n"
             "\n%s", strlen(pageText), pageText);
 
     socket_write_string(client, buffer);
