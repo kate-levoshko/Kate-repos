@@ -8,6 +8,7 @@
 #include "sqlite3.h"
 #include "sqlite3ext.h"
 #include "server.h"
+#include "cJSON.h"
 
 #include <jansson.h>
 #include "CURL\include\curl\curl.h"
@@ -15,36 +16,32 @@
 #include <winsock2.h>
 #include <windows.h>
 
-
-
-int server_sendJson(socket_t * socket, json_t * root){
-	char buffer[5000];
-	char * jsonOutput = json_dumps(root, JSON_INDENT(3));
-	sprintf(buffer,
-		"HTTP/1.1 200 OK\n"
-		"Content-Type: application/json\n"
-		"Content-Length: %d\n"
-		"%s", strlen(jsonOutput), jsonOutput);
-	socket_write_string(socket, buffer);
-	return 1;
-}
-
-void server_info(socket_t* clientSocket)
+int main()
 {
-	json_t * student = json_object();
-	
-	json_object_set_new(student, "student", "Kate Levoshko");
-	json_object_set_new(student, "group", "KP-52");
-	json_object_set_new(student, "variant", 31);
-	char * jsonSM = json_print(student);
-	server_sent(clientSocket, jsonSM);
-}
+	lib_init();
+	socket_t * server = socket_new();
+	socket_bind(server, 5000);
+	socket_listen(server);
+	char buf[10000];
+	socket_t * client = NULL;
+	while (1)
+	{
+		client = socket_accept(server);
+		socket_read(client, buf, sizeof(buf));
+		printf("%s", buf);
+		if (strlen(buf) != 0){
+			http_request_t rs;
+			rs = http_request_parse(buf);
+			if (strcmp(rs.method, "GET") == 0 && strcmp(rs.uri, "/info") == 0)
+			{
+				server_info(client);
+			}
 
-/*
-size_t write_to_string(void *ptr, size_t size, size_t count, void *stream) {
-	strcpy((char*)stream, (char*)ptr);
-	return size*count;
+		}
+	}
+	return 0;
 }
+/*
 
 int main(void){
 	json_t* test = json_pack("{s:s}", "KATYA", "SDAST");
