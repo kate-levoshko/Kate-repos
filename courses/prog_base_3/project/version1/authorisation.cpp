@@ -22,7 +22,7 @@ void authorisation::on_pushButton_clicked()
     QString password = ui->lineEdit_2->text();
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/Bogdan/Documents/course_work_1/my.db");
+    db.setDatabaseName("C:/Users/Katya/Documents/GitHub/Kate-repos/courses/prog_base_3/project/version1/my.db);
     db.open();
 
     QSqlQuery query(db);
@@ -33,7 +33,7 @@ void authorisation::on_pushButton_clicked()
         w.exec();
     }
     else {
-        ui->label_3->setText("Huinya");
+        ui->label_3->setText("OK");
     }
 
 }
