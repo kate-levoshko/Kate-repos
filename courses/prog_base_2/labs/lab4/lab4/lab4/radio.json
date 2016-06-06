@@ -1,0 +1,30 @@
+[{
+		"id": 1,
+		"name": "Lina",
+		"surname": "Dovhaniuk",
+		"birthdate": "1998-06-10 ",
+		"jobExperience": 2.5,
+		"salary": 3000,
+		"favouriteSong": "Gori"
+	},
+
+	{
+		"id": 2,
+		"name": "Olya",
+		"surname": "Yashan",
+		"birthdate": "1997-10-20",
+		"jobExperience": 6.7,
+		"salary": 2500,
+		"favouriteSong": "Motilek"
+	},
+
+	{
+		"id": 3,
+		"name": "Karina",
+		"surname": "Chumak",
+		"birthdate": "1996-04-15",
+		"jobExperience": 7.0,
+		"salary": 2500,
+		"favouriteSong": "LoveYou"
+	}
+]
