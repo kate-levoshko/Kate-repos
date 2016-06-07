@@ -22,7 +22,7 @@ void authorisation::on_pushButton_clicked()
     QString password = ui->lineEdit_2->text();
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/Katya/Documents/GitHub/Kate-repos/courses/prog_base_3/project/version1/my.db);
+    db.setDatabaseName("C:/Users/Katya/Documents/GitHub/Kate-repos/courses/prog_base_3/project/version1/my.db");
     db.open();
 
     QSqlQuery query(db);
