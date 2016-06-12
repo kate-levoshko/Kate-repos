@@ -3,6 +3,8 @@
 #include "personaloffice.h"
 #include "bucketgui.h"
 #include "QMessageBox"
+#include "product.h"
+#include "buydialog.h"
 
 CatalogGUI::CatalogGUI(QWidget *parent) :
     QWidget(parent),
@@ -118,8 +120,6 @@ void CatalogGUI::on_dcSearchButton_clicked()
     if(query != NULL){
         model->setQuery(*query);
         ui->decCosmeticsTable->setModel(model);
-    } else {
-        QMessageBox::information(this, "Поиск" ,"Поиск не дал результатов.");
     }
     db->closeDataBase();
 }
@@ -132,8 +132,6 @@ void CatalogGUI::on_perfumSearchButton_clicked()
     if(query != NULL){
         model->setQuery(*query);
         ui->perfumTable->setModel(model);
-    } else {
-        QMessageBox::information(this, "Поиск" ,"Поиск не дал результатов.");
     }
     db->closeDataBase();
 }
@@ -146,8 +144,6 @@ void CatalogGUI::on_skinSearchButton_clicked()
     if(query != NULL){
         model->setQuery(*query);
         ui->skinTable->setModel(model);
-    } else {
-        QMessageBox::information(this, "Поиск" ,"Поиск не дал результатов.");
     }
     db->closeDataBase();
 }
@@ -160,8 +156,6 @@ void CatalogGUI::on_hairSearchButton_clicked()
     if(query != NULL){
         model->setQuery(*query);
         ui->hairTable->setModel(model);
-    } else {
-        QMessageBox::information(this, "Поиск" ,"Поиск не дал результатов.");
     }
     db->closeDataBase();
 }
@@ -174,15 +168,51 @@ void CatalogGUI::on_nailsSearchButton_clicked()
     if(query != NULL){
         model->setQuery(*query);
         ui->nailsTable->setModel(model);
-    } else {
-        QMessageBox::information(this, "Поиск" ,"Поиск не дал результатов.");
     }
     db->closeDataBase();
 }
 
 void CatalogGUI::on_decCosmeticsTable_doubleClicked(const QModelIndex &index)
 {
-    QModelIndexList cc = ui->decCosmeticsTable->selectionModel()->selectedIndexes();
-    qDebug() << cc.value(1).data();
+    QModelIndexList data = ui->decCosmeticsTable->selectionModel()->selectedIndexes();
+    Product* pr = new Product(data.value(0).data().toString(),data.value(1).data().toDouble(),data.value(2).data().toInt());
+    BuyDialog* dialog = new BuyDialog();
+    dialog->init(pr);
+    dialog->show();
+}
 
+void CatalogGUI::on_perfumTable_doubleClicked(const QModelIndex &index)
+{
+    QModelIndexList data = ui->perfumTable->selectionModel()->selectedIndexes();
+    Product* pr = new Product(data.value(0).data().toString(),data.value(1).data().toDouble(),data.value(2).data().toInt());
+    BuyDialog* dialog = new BuyDialog();
+    dialog->init(pr);
+    dialog->show();
+}
+
+void CatalogGUI::on_skinTable_doubleClicked(const QModelIndex &index)
+{
+    QModelIndexList data = ui->skinTable->selectionModel()->selectedIndexes();
+    Product* pr = new Product(data.value(0).data().toString(),data.value(1).data().toDouble(),data.value(2).data().toInt());
+    BuyDialog* dialog = new BuyDialog();
+    dialog->init(pr);
+    dialog->show();
+}
+
+void CatalogGUI::on_nailsTable_doubleClicked(const QModelIndex &index)
+{
+    QModelIndexList data = ui->nailsTable->selectionModel()->selectedIndexes();
+    Product* pr = new Product(data.value(0).data().toString(),data.value(1).data().toDouble(),data.value(2).data().toInt());
+    BuyDialog* dialog = new BuyDialog();
+    dialog->init(pr);
+    dialog->show();
+}
+
+void CatalogGUI::on_hairTable_doubleClicked(const QModelIndex &index)
+{
+    QModelIndexList data = ui->hairTable->selectionModel()->selectedIndexes();
+    Product* pr = new Product(data.value(0).data().toString(),data.value(1).data().toDouble(),data.value(2).data().toInt());
+    BuyDialog* dialog = new BuyDialog();
+    dialog->init(pr);
+    dialog->show();
 }

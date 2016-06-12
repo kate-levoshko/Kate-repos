@@ -3,6 +3,7 @@
 #include "mainwindow.h"
 #include "cataloggui.h"
 #include "currentuser.h"
+#include "bucket.h"
 
 
 PersonalOffice::PersonalOffice(QWidget *parent) :
@@ -26,6 +27,8 @@ void PersonalOffice::on_logOutButton_clicked()
     MainWindow* w = new MainWindow();
     this->close();
     current_user = NULL;
+    Bucket* bk = Bucket::getInstance();
+    bk->cleanBucket();
     w->show();
 }
 

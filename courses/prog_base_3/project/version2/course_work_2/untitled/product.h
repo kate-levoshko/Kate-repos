@@ -6,12 +6,16 @@
 class Product
 {
 public:
-    Product(QString name, QString price, QString count);
-
+    Product(QString name, double price, int count);
+    QString getName();
+    double getPrice();
+    int getCount();
+    void setCount(int count);
+    void setPrice(double price);
 private:
     QString name;
-    QString price;
-    QString count;
+    double price;
+    int count;
 };
 
 #endif // PRODUCT_H

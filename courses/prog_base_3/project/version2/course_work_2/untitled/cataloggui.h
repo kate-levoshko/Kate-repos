@@ -36,6 +36,14 @@ private slots:
 
     void on_decCosmeticsTable_doubleClicked(const QModelIndex &index);
 
+    void on_perfumTable_doubleClicked(const QModelIndex &index);
+
+    void on_skinTable_doubleClicked(const QModelIndex &index);
+
+    void on_nailsTable_doubleClicked(const QModelIndex &index);
+
+    void on_hairTable_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::CatalogGUI *ui;
     DataBase* db;

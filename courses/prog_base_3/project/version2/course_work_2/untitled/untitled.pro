@@ -21,6 +21,10 @@ SOURCES += main.cpp\
     user.cpp \
     database.cpp \
     currentuser.cpp \
+    bucketgui.cpp \
+    product.cpp \
+    bucket.cpp \
+    buydialog.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -30,10 +34,16 @@ HEADERS  += mainwindow.h \
     registration.h \
     personaloffice.h \
     database.h \
+    bucketgui.h \
+    product.h \
+    bucket.h \
+    buydialog.h
 
 
 FORMS    += mainwindow.ui \
     registration.ui \
     cataloggui.ui \
     personaloffice.ui \
+    bucketgui.ui \
+    buydialog.ui
 
