@@ -1,5 +1,6 @@
 #include "database.h"
 #include "currentuser.h"
+#include "product.h"
 
 DataBase::DataBase(QObject *parent) : QObject(parent)
 {
@@ -9,6 +10,10 @@ DataBase::DataBase(QObject *parent) : QObject(parent)
 DataBase::~DataBase()
 {
 
+}
+
+QSqlDatabase DataBase::getDb(){
+    return db;
 }
 
 void DataBase::connectToDataBase()
@@ -43,7 +48,6 @@ bool DataBase::openDataBase()
         return false;
     }
 }
-
 
 void DataBase::closeDataBase()
 {
@@ -130,4 +134,13 @@ bool DataBase::registration(QString login, QString password, QString name, QStri
     }
 
     return false;
+}
+
+QSqlQuery* DataBase::search(QString name, QString type){
+    QSqlQuery* query = new QSqlQuery(db);
+    if(query->exec("SELECT product_name , price, count FROM PRODUCTS WHERE  product_name LIKE '%"+name+"%' AND type = '"+type+"';")){
+        return query;
+    }
+
+    return NULL;
 }

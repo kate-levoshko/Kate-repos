@@ -21,6 +21,8 @@ public:
     bool authorization(QString login, QString password);
     bool registration(QString login, QString password, QString name, QString surname, QString phone);
     bool isUnique(QString login);
+    QSqlDatabase getDb();
+    QSqlQuery* search(QString name, QString type);
 
 private:
     QSqlDatabase    db;

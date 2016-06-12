@@ -22,10 +22,9 @@ void MainWindow::on_singInButton_clicked()
     DataBase* db = new DataBase();
     db->connectToDataBase();
     if(db->authorization(ui->loginEdit->text(), ui->passwordEdit->text())){
-        //PersonalOffice* w = new PersonalOffice();
-        CatalogGUI* w1 = new CatalogGUI();
+        CatalogGUI* w = new CatalogGUI();
         this->close();
-        w1->show();
+        w->show();
         db->closeDataBase();
     } else {
         //Error

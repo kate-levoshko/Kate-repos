@@ -2,6 +2,7 @@
 #include "ui_registration.h"
 #include "database.h"
 #include "mainwindow.h"
+#include <QMessageBox>
 
 Registration::Registration(QWidget *parent) :
     QWidget(parent),
@@ -22,17 +23,18 @@ void Registration::on_registerButton_clicked()
 
     if(ui->passwordEdit->text() ==  ui->passwordEdit_2->text()){
         if(db->isUnique(ui->loginEdit->text())){
-
             if(db->registration(ui->loginEdit->text(),ui->passwordEdit->text(),ui->nameEdit->text(),ui->surnameEdit->text(),ui->phoneEdit->text())){
                 MainWindow* w = new MainWindow();
                 this->close();
                 w->show();
             }
         } else {
-           // Someone already has that username. имя уже занято
+            QMessageBox::warning(this, tr("Ошибка") ,tr("Это имя уже занято. Попробуйте другое."));
         }
     } else {
-        //These passwords don't match. пароли не совпадают
+        QMessageBox::warning(this, tr("Ошибка") ,tr("Пароли не совпадают. Повторите попытку."));
+        ui->passwordEdit->setText("");
+        ui->passwordEdit_2->setText("");
     }
 
     db->closeDataBase();

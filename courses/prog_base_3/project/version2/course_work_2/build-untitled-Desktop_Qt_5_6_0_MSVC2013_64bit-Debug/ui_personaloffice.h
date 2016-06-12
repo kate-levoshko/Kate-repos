@@ -56,6 +56,7 @@ public:
         PersonalOffice->setSizePolicy(sizePolicy);
         PersonalOffice->setMinimumSize(QSize(800, 600));
         PersonalOffice->setMaximumSize(QSize(800, 600));
+        PersonalOffice->setAcceptDrops(false);
         label = new QLabel(PersonalOffice);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(200, -10, 411, 111));
