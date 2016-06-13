@@ -9,6 +9,7 @@
 #include <QFile>
 #include <QDate>
 #include <QDebug>
+#include "product.h"
 
 class DataBase : public QObject
 {
@@ -23,15 +24,17 @@ public:
     bool isUnique(QString login);
     QSqlDatabase getDb();
     QSqlQuery* search(QString name, QString type);
-
+    void update(QString name, int c, double bonus);
 private:
-    QSqlDatabase    db;
+    QSqlDatabase db;
 
 private:
     bool openDataBase();
     bool restoreDataBase();
     bool createUsersTable();
     bool createProductsTable();
+    int getCountProduct(QString name);
+    double getBonusUser();
 };
 
 #endif // DATABASE_H

@@ -50,6 +50,7 @@ public:
     QPushButton *personalOfficeButton;
     QPushButton *bucketButton;
     QLabel *label;
+    QLabel *label_2;
 
     void setupUi(QWidget *CatalogGUI)
     {
@@ -64,6 +65,9 @@ public:
         CatalogGUI->setMinimumSize(QSize(800, 600));
         CatalogGUI->setMaximumSize(QSize(800, 600));
         CatalogGUI->setFocusPolicy(Qt::TabFocus);
+        QIcon icon;
+        icon.addFile(QStringLiteral("../../../../../../../../../Desktop/Makeup_1.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        CatalogGUI->setWindowIcon(icon);
         sTable = new QTabWidget(CatalogGUI);
         sTable->setObjectName(QStringLiteral("sTable"));
         sTable->setGeometry(QRect(20, 60, 761, 521));
@@ -186,12 +190,22 @@ public:
         bucketButton->setFont(font);
         label = new QLabel(CatalogGUI);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(170, 20, 471, 16));
+        label->setGeometry(QRect(610, 579, 191, 21));
         label->setOpenExternalLinks(true);
+        label_2 = new QLabel(CatalogGUI);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(0, -10, 801, 621));
+        label_2->setPixmap(QPixmap(QString::fromUtf8("../../q.jpg")));
+        label_2->setScaledContents(true);
+        label_2->raise();
+        sTable->raise();
+        personalOfficeButton->raise();
+        bucketButton->raise();
+        label->raise();
 
         retranslateUi(CatalogGUI);
 
-        sTable->setCurrentIndex(0);
+        sTable->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(CatalogGUI);
@@ -213,6 +227,7 @@ public:
         personalOfficeButton->setText(QApplication::translate("CatalogGUI", "Personal", 0));
         bucketButton->setText(QApplication::translate("CatalogGUI", "Bucket", 0));
         label->setText(QApplication::translate("CatalogGUI", "<A HREF='https://vk.com/katelevoshko'>Developer</A>", 0));
+        label_2->setText(QString());
     } // retranslateUi
 
 };

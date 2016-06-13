@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QWidget>
@@ -27,6 +28,7 @@ public:
     QPushButton *cleanButton;
     QPushButton *buyButton;
     QPushButton *backButton;
+    QLabel *label;
 
     void setupUi(QWidget *BucketGUI)
     {
@@ -41,6 +43,9 @@ public:
         BucketGUI->setMinimumSize(QSize(800, 600));
         BucketGUI->setMaximumSize(QSize(800, 600));
         BucketGUI->setFocusPolicy(Qt::TabFocus);
+        QIcon icon;
+        icon.addFile(QStringLiteral("../../../../../../../../../Desktop/Makeup_1.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        BucketGUI->setWindowIcon(icon);
         buyTable = new QTableWidget(BucketGUI);
         if (buyTable->columnCount() < 3)
             buyTable->setColumnCount(3);
@@ -76,6 +81,16 @@ public:
         backButton->setObjectName(QStringLiteral("backButton"));
         backButton->setGeometry(QRect(20, 10, 75, 31));
         backButton->setFont(font);
+        label = new QLabel(BucketGUI);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(0, -10, 801, 591));
+        label->setPixmap(QPixmap(QString::fromUtf8("../../bucket.jpg")));
+        label->setScaledContents(true);
+        label->raise();
+        buyTable->raise();
+        cleanButton->raise();
+        buyButton->raise();
+        backButton->raise();
 
         retranslateUi(BucketGUI);
 
@@ -94,6 +109,7 @@ public:
         cleanButton->setText(QApplication::translate("BucketGUI", "Clean", 0));
         buyButton->setText(QApplication::translate("BucketGUI", "Buy", 0));
         backButton->setText(QApplication::translate("BucketGUI", "Back", 0));
+        label->setText(QString());
     } // retranslateUi
 
 };

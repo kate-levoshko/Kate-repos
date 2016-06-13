@@ -28,10 +28,17 @@
     <height>600</height>
    </size>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::TabFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>Kateflame</string>
   </property>
-  <widget class="QTabWidget" name="tabWidget">
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../../../../../../../Desktop/Makeup_1.jpg</normaloff>../../../../../../../../../Desktop/Makeup_1.jpg</iconset>
+  </property>
+  <widget class="QTabWidget" name="sTable">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -43,21 +50,11 @@
    <property name="currentIndex">
     <number>4</number>
    </property>
-   <widget class="QWidget" name="tab">
+   <widget class="QWidget" name="cosmeticTab">
     <attribute name="title">
      <string>Декоративна косметика</string>
     </attribute>
-    <widget class="QTableView" name="tableView">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>731</width>
-       <height>441</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="dcSearchButton">
      <property name="geometry">
       <rect>
        <x>650</x>
@@ -70,7 +67,7 @@
       <string>Search</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="cosmeticSearchEdit">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -80,12 +77,61 @@
       </rect>
      </property>
     </widget>
+    <widget class="QTableView" name="decCosmeticsTable">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>732</width>
+       <height>441</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::TabFocus</enum>
+     </property>
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="autoScrollMargin">
+      <number>16</number>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::DoubleClicked</set>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="gridStyle">
+      <enum>Qt::DashLine</enum>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>237</number>
+     </attribute>
+     <attribute name="horizontalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderDefaultSectionSize">
+      <number>30</number>
+     </attribute>
+     <attribute name="verticalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
+    </widget>
    </widget>
-   <widget class="QWidget" name="tab_2">
+   <widget class="QWidget" name="perfumTab">
     <attribute name="title">
      <string>Парфумерні засоби</string>
     </attribute>
-    <widget class="QLineEdit" name="lineEdit_6">
+    <widget class="QLineEdit" name="perfumSearchEdit">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -95,7 +141,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QTableView" name="tableView_6">
+    <widget class="QTableView" name="perfumTable">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -104,8 +150,32 @@
        <height>441</height>
       </rect>
      </property>
+     <property name="focusPolicy">
+      <enum>Qt::TabFocus</enum>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>243</number>
+     </attribute>
+     <attribute name="horizontalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
     </widget>
-    <widget class="QPushButton" name="pushButton_3">
+    <widget class="QPushButton" name="perfumSearchButton">
      <property name="geometry">
       <rect>
        <x>650</x>
@@ -119,11 +189,11 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="tab_3">
+   <widget class="QWidget" name="skinTab">
     <attribute name="title">
      <string>Догляд за шкірою/обличчям</string>
     </attribute>
-    <widget class="QPushButton" name="pushButton_4">
+    <widget class="QPushButton" name="skinSearchButton">
      <property name="geometry">
       <rect>
        <x>650</x>
@@ -136,7 +206,7 @@
       <string>Search</string>
      </property>
     </widget>
-    <widget class="QTableView" name="tableView_3">
+    <widget class="QTableView" name="skinTable">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -145,8 +215,32 @@
        <height>441</height>
       </rect>
      </property>
+     <property name="focusPolicy">
+      <enum>Qt::TabFocus</enum>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>243</number>
+     </attribute>
+     <attribute name="horizontalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_3">
+    <widget class="QLineEdit" name="skinSearchEdit">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -157,49 +251,11 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="tab_4">
-    <attribute name="title">
-     <string>Догляд за волоссям</string>
-    </attribute>
-    <widget class="QLineEdit" name="lineEdit_7">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>631</width>
-       <height>20</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QTableView" name="tableView_7">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>731</width>
-       <height>441</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_8">
-     <property name="geometry">
-      <rect>
-       <x>650</x>
-       <y>10</y>
-       <width>91</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Search</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tab_5">
+   <widget class="QWidget" name="nailsTab">
     <attribute name="title">
      <string>Догляд за нігтями</string>
     </attribute>
-    <widget class="QLineEdit" name="lineEdit_8">
+    <widget class="QLineEdit" name="nailsSearchEdit">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -209,7 +265,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QTableView" name="tableView_8">
+    <widget class="QTableView" name="nailsTable">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -218,8 +274,94 @@
        <height>441</height>
       </rect>
      </property>
+     <property name="focusPolicy">
+      <enum>Qt::TabFocus</enum>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>243</number>
+     </attribute>
+     <attribute name="horizontalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
     </widget>
-    <widget class="QPushButton" name="pushButton_9">
+    <widget class="QPushButton" name="nailsSearchButton">
+     <property name="geometry">
+      <rect>
+       <x>650</x>
+       <y>10</y>
+       <width>91</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Search</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="hairTab">
+    <attribute name="title">
+     <string>Догляд за волоссям</string>
+    </attribute>
+    <widget class="QLineEdit" name="hairSearchEdit">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>631</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QTableView" name="hairTable">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>731</width>
+       <height>441</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::TabFocus</enum>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>243</number>
+     </attribute>
+     <attribute name="horizontalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
+    </widget>
+    <widget class="QPushButton" name="hairSearchButton">
      <property name="geometry">
       <rect>
        <x>650</x>
@@ -239,14 +381,81 @@
     <rect>
      <x>700</x>
      <y>10</y>
-     <width>75</width>
+     <width>81</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Monotype Corsiva</family>
+     <pointsize>14</pointsize>
+     <italic>true</italic>
+    </font>
    </property>
    <property name="text">
     <string>Personal</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="bucketButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Monotype Corsiva</family>
+     <pointsize>14</pointsize>
+     <italic>true</italic>
+    </font>
+   </property>
+   <property name="text">
+    <string>Bucket</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>579</y>
+     <width>191</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;A HREF='https://vk.com/katelevoshko'&gt;Developer&lt;/A&gt;</string>
+   </property>
+   <property name="openExternalLinks">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>-10</y>
+     <width>801</width>
+     <height>621</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../../q.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>label_2</zorder>
+  <zorder>sTable</zorder>
+  <zorder>personalOfficeButton</zorder>
+  <zorder>bucketButton</zorder>
+  <zorder>label</zorder>
  </widget>
  <resources/>
  <connections/>

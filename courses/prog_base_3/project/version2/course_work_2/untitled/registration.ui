@@ -34,6 +34,10 @@
   <property name="windowTitle">
    <string>Kateframe</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../../../../../../../Desktop/Makeup_1.jpg</normaloff>../../../../../../../../../Desktop/Makeup_1.jpg</iconset>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -60,10 +64,10 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>110</y>
-     <width>521</width>
-     <height>311</height>
+     <x>131</x>
+     <y>115</y>
+     <width>621</width>
+     <height>361</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -251,8 +255,8 @@
   <widget class="QPushButton" name="registerButton">
    <property name="geometry">
     <rect>
-     <x>550</x>
-     <y>430</y>
+     <x>610</x>
+     <y>490</y>
      <width>121</width>
      <height>31</height>
     </rect>

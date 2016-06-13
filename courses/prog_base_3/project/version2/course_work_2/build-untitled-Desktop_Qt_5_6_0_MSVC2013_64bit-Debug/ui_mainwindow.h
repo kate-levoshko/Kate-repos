@@ -42,6 +42,7 @@ public:
     QHBoxLayout *horizontalLayout_8;
     QPushButton *registerButton;
     QPushButton *singInButton;
+    QLabel *label_4;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -57,6 +58,9 @@ public:
         MainWindow->setMinimumSize(QSize(800, 600));
         MainWindow->setMaximumSize(QSize(800, 600));
         MainWindow->setFocusPolicy(Qt::TabFocus);
+        QIcon icon;
+        icon.addFile(QStringLiteral("../../../../../../../../../Desktop/Makeup_1.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        MainWindow->setWindowIcon(icon);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Minimum);
@@ -75,6 +79,8 @@ public:
         font.setPointSize(72);
         font.setItalic(true);
         label_3->setFont(font);
+        label_3->setStyleSheet(QLatin1String("background-color: rgba(255,255,255,178);\n"
+"border-radius: 10px;"));
         label_3->setTextFormat(Qt::AutoText);
         label_3->setAlignment(Qt::AlignCenter);
         verticalLayoutWidget = new QWidget(centralWidget);
@@ -160,7 +166,13 @@ public:
 
         horizontalLayout_8->addWidget(singInButton);
 
+        label_4 = new QLabel(centralWidget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(-10, -10, 821, 621));
+        label_4->setPixmap(QPixmap(QString::fromUtf8("../../mineralkosm2.jpg")));
+        label_4->setScaledContents(true);
         MainWindow->setCentralWidget(centralWidget);
+        label_4->raise();
         layoutWidget->raise();
         label_3->raise();
         verticalLayoutWidget->raise();
@@ -178,6 +190,7 @@ public:
         label_2->setText(QApplication::translate("MainWindow", "Password", 0));
         registerButton->setText(QApplication::translate("MainWindow", "Register", 0));
         singInButton->setText(QApplication::translate("MainWindow", "SingIn", 0));
+        label_4->setText(QString());
     } // retranslateUi
 
 };

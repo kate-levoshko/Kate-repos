@@ -64,7 +64,7 @@ bool DataBase::createUsersTable()
                         "name varchar(32) NOT NULL,"
                         "surname varchar(32) NOT NULL,"
                         "phone varchar(12) NOT NULL,"
-                        "balance varchar(10) NOT NULL"
+                        "bonus varchar(10) NOT NULL"
                     ");"
                     )){
         return false;
@@ -96,15 +96,15 @@ bool DataBase::createProductsTable()
 bool DataBase:: authorization(QString login, QString password){
     QSqlQuery query;
 
-    if (query.exec("SELECT name, surname, phone, balance FROM USERS WHERE LOGIN = '"+login+"' AND PASSWORD = '"+password+"';")){
+    if (query.exec("SELECT name, surname, phone, bonus FROM USERS WHERE LOGIN = '"+login+"' AND PASSWORD = '"+password+"';")){
         if (query.next()){
             QString name = query.value("name").toString();
             QString surname = query.value("surname").toString();
             QString phone_number = query.value("phone").toString();
 
-            QString bonus = query.value("balance").toString();
+            QString bonus = query.value("bonus").toString();
 
-            current_user = new User(name, surname, phone_number, bonus);
+            current_user = new User(login, name, surname, phone_number, bonus);
             return true;
         }
     }
@@ -128,7 +128,7 @@ bool DataBase::isUnique(QString login){
 bool DataBase::registration(QString login, QString password, QString name, QString surname, QString phone){
     QSqlQuery query;
 
-    if(query.exec("INSERT INTO USERS (login, password, name, surname, phone, balance) VALUES ('"
+    if(query.exec("INSERT INTO USERS (login, password, name, surname, phone, bonus) VALUES ('"
                 +login+"','"+password+"','"+name+"','"+surname+"','"+phone+"','0.0');")){
         return true;
     }
@@ -138,9 +138,49 @@ bool DataBase::registration(QString login, QString password, QString name, QStri
 
 QSqlQuery* DataBase::search(QString name, QString type){
     QSqlQuery* query = new QSqlQuery(db);
-    if(query->exec("SELECT product_name , price, count FROM PRODUCTS WHERE  product_name LIKE '%"+name+"%' AND type = '"+type+"';")){
-        return query;
+    query->exec("SELECT product_name , price, count FROM PRODUCTS WHERE  product_name LIKE '%"+name+"%' AND type = '"+type+"';");
+    return query;
+}
+
+ void DataBase::update(QString name, int c, double price){
+     QSqlQuery* query = new QSqlQuery(db);
+     int count = getCountProduct(name);
+
+     query->exec("UPDATE PRODUCTS SET count ="+QString::number(count - c)+" WHERE product_name = '"+name+"';");
+     if(query->next()){
+         count = query->value(0).toInt();
+     }
+
+     int bonus = getBonusUser();
+     if(query->exec("UPDATE USERS SET bonus ="+QString::number(bonus + price * 0.05)+" WHERE login = '"+current_user->getLogin()+"';")){
+         QString b = QString::number(bonus + price * 0.01);
+         current_user->setBonus(b);
+     }
+
+
+ }
+
+int DataBase::getCountProduct(QString name){
+    QSqlQuery* query = new QSqlQuery(db);
+    int count = 0;
+
+    query->exec("SELECT count FROM PRODUCTS WHERE  product_name  = '"+name+"';");
+    if(query->next()){
+        count = query->value(0).toInt();
     }
 
-    return NULL;
+    return count;
 }
+
+double DataBase::getBonusUser(){
+    QSqlQuery* query = new QSqlQuery(db);
+    double bonus = 0;
+
+    query->exec("SELECT bonus FROM USERS WHERE  login  = '"+current_user->getLogin()+"';");
+    if(query->next()){
+        bonus = query->value(0).toDouble();
+    }
+
+    return bonus;
+}
+

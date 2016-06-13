@@ -217,3 +217,29 @@ void CatalogGUI::on_hairTable_doubleClicked(const QModelIndex &index)
     dialog->init(pr);
     dialog->show();
 }
+
+
+void CatalogGUI::on_cosmeticSearchEdit_returnPressed()
+{
+    ui->dcSearchButton->click();
+}
+
+void CatalogGUI::on_perfumSearchEdit_returnPressed()
+{
+    ui->perfumSearchButton->click();
+}
+
+void CatalogGUI::on_skinSearchEdit_returnPressed()
+{
+    ui->skinSearchButton->click();
+}
+
+void CatalogGUI::on_nailsSearchEdit_returnPressed()
+{
+    ui->nailsSearchButton->click();
+}
+
+void CatalogGUI::on_hairSearchEdit_returnPressed()
+{
+    ui->hairSearchButton->click();
+}

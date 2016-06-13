@@ -20,6 +20,10 @@ private slots:
 
     void on_registerButton_clicked();
 
+    void on_passwordEdit_returnPressed();
+
+    void on_loginEdit_returnPressed();
+
 private:
     Ui::MainWindow *ui;
 };

@@ -58,6 +58,9 @@ public:
         Registration->setMinimumSize(QSize(800, 600));
         Registration->setMaximumSize(QSize(800, 600));
         Registration->setFocusPolicy(Qt::TabFocus);
+        QIcon icon;
+        icon.addFile(QStringLiteral("../../../../../../../../../Desktop/Makeup_1.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        Registration->setWindowIcon(icon);
         label = new QLabel(Registration);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(160, 0, 501, 111));
@@ -69,7 +72,7 @@ public:
         label->setAlignment(Qt::AlignCenter);
         layoutWidget = new QWidget(Registration);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(150, 110, 521, 311));
+        layoutWidget->setGeometry(QRect(131, 115, 621, 361));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -170,7 +173,7 @@ public:
 
         registerButton = new QPushButton(Registration);
         registerButton->setObjectName(QStringLiteral("registerButton"));
-        registerButton->setGeometry(QRect(550, 430, 121, 31));
+        registerButton->setGeometry(QRect(610, 490, 121, 31));
         QFont font2;
         font2.setFamily(QStringLiteral("Monotype Corsiva"));
         font2.setPointSize(16);

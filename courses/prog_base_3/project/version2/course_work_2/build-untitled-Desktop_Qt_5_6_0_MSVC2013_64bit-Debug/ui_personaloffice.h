@@ -43,6 +43,7 @@ public:
     QLabel *phoneLabel;
     QLabel *label_10;
     QLabel *balanceLabel;
+    QLabel *label_7;
 
     void setupUi(QWidget *PersonalOffice)
     {
@@ -57,6 +58,9 @@ public:
         PersonalOffice->setMinimumSize(QSize(800, 600));
         PersonalOffice->setMaximumSize(QSize(800, 600));
         PersonalOffice->setFocusPolicy(Qt::TabFocus);
+        QIcon icon;
+        icon.addFile(QStringLiteral("../../../../../../../../../Desktop/Makeup_1.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        PersonalOffice->setWindowIcon(icon);
         label = new QLabel(PersonalOffice);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(200, -10, 411, 111));
@@ -95,6 +99,8 @@ public:
         label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setFont(font2);
+        label_2->setStyleSheet(QLatin1String("background-color: rgba(255,255,255,178);\n"
+"border-radius: 10px;"));
         label_2->setAlignment(Qt::AlignCenter);
 
         verticalLayout_2->addWidget(label_2);
@@ -102,6 +108,8 @@ public:
         label_3 = new QLabel(layoutWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setFont(font2);
+        label_3->setStyleSheet(QLatin1String("background-color: rgba(255,255,255,178);\n"
+"border-radius: 10px;"));
         label_3->setAlignment(Qt::AlignCenter);
 
         verticalLayout_2->addWidget(label_3);
@@ -109,6 +117,8 @@ public:
         label_5 = new QLabel(layoutWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
         label_5->setFont(font2);
+        label_5->setStyleSheet(QLatin1String("background-color: rgba(255,255,255,178);\n"
+"border-radius: 10px;"));
         label_5->setAlignment(Qt::AlignCenter);
 
         verticalLayout_2->addWidget(label_5);
@@ -123,6 +133,8 @@ public:
         label_4 = new QLabel(layoutWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setFont(font2);
+        label_4->setStyleSheet(QLatin1String("background-color: rgba(255,255,255,178);\n"
+"border-radius: 10px;"));
         label_4->setAlignment(Qt::AlignCenter);
 
         verticalLayout_2->addWidget(label_4);
@@ -168,6 +180,17 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
+        label_7 = new QLabel(PersonalOffice);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(-10, -10, 821, 621));
+        label_7->setPixmap(QPixmap(QString::fromUtf8("../../kosmetika.jpg")));
+        label_7->setScaledContents(true);
+        label_7->setWordWrap(false);
+        label_7->raise();
+        label->raise();
+        backButton->raise();
+        logOutButton->raise();
+        layoutWidget->raise();
 
         retranslateUi(PersonalOffice);
 
@@ -184,12 +207,13 @@ public:
         label_3->setText(QApplication::translate("PersonalOffice", "Surname:", 0));
         label_5->setText(QApplication::translate("PersonalOffice", "Phone:", 0));
         label_6->setText(QString());
-        label_4->setText(QApplication::translate("PersonalOffice", "Bonus :", 0));
+        label_4->setText(QApplication::translate("PersonalOffice", "Bonus:", 0));
         nameLabel->setText(QString());
         surnameLabel->setText(QString());
         phoneLabel->setText(QString());
         label_10->setText(QString());
         balanceLabel->setText(QString());
+        label_7->setText(QString());
     } // retranslateUi
 
 };

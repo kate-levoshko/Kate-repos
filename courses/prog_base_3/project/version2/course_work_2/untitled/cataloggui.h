@@ -44,6 +44,16 @@ private slots:
 
     void on_hairTable_doubleClicked(const QModelIndex &index);
 
+    void on_cosmeticSearchEdit_returnPressed();
+
+    void on_perfumSearchEdit_returnPressed();
+
+    void on_skinSearchEdit_returnPressed();
+
+    void on_nailsSearchEdit_returnPressed();
+
+    void on_hairSearchEdit_returnPressed();
+
 private:
     Ui::CatalogGUI *ui;
     DataBase* db;

@@ -57,25 +57,24 @@ void Registration::on_registerButton_clicked()
     DataBase* db = new DataBase();
     db->connectToDataBase();
 
-    if(ui->passwordEdit->text() ==  ui->passwordEdit_2->text()){
-        if(db->isUnique(ui->loginEdit->text())){
-            if(db->registration(ui->loginEdit->text(),ui->passwordEdit->text(),ui->nameEdit->text(),ui->surnameEdit->text(),ui->phoneEdit->text())){
-                if (isCorrectData()){
-                    MainWindow* w = new MainWindow();
-                    this->close();
-                    w->show();
+    if (isCorrectData()){
+        if(ui->passwordEdit->text() ==  ui->passwordEdit_2->text()){
+            if(db->isUnique(ui->loginEdit->text())){
+                if(db->registration(ui->loginEdit->text(),ui->passwordEdit->text(),ui->nameEdit->text(),ui->surnameEdit->text(),ui->phoneEdit->text())){
+                   MainWindow* w = new MainWindow();
+                   this->close();
+                   w->show();
                 }
-                else {
-                    QMessageBox::warning(this, tr("Error") ,tr("Неккоректные данные!"));
-                }
+            } else {
+                QMessageBox::warning(this, tr("Error") ,tr("Это имя уже занято. Попробуйте другое."));
             }
-        } else {
-            QMessageBox::warning(this, tr("Error") ,tr("Это имя уже занято. Попробуйте другое."));
-        }
+         } else {
+            QMessageBox::warning(this, tr("Error") ,tr("Пароли не совпадают. Повторите попытку."));
+            ui->passwordEdit->setText("");
+            ui->passwordEdit_2->setText("");
+          }
     } else {
-        QMessageBox::warning(this, tr("Error") ,tr("Пароли не совпадают. Повторите попытку."));
-        ui->passwordEdit->setText("");
-        ui->passwordEdit_2->setText("");
+        QMessageBox::warning(this, tr("Error") ,tr("Неккоректные данные!"));
     }
 
     db->closeDataBase();

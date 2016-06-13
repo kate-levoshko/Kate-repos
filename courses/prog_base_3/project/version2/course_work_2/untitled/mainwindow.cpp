@@ -39,3 +39,13 @@ void MainWindow::on_registerButton_clicked()
     this->close();
     w->show();
 }
+
+void MainWindow::on_passwordEdit_returnPressed()
+{
+    ui->singInButton->click();
+}
+
+void MainWindow::on_loginEdit_returnPressed()
+{
+     ui->singInButton->click();
+}

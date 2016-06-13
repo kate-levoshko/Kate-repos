@@ -37,6 +37,10 @@
   <property name="windowTitle">
    <string>Kateflame</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../../../../../../../Desktop/Makeup_1.jpg</normaloff>../../../../../../../../../Desktop/Makeup_1.jpg</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -74,6 +78,10 @@
       <pointsize>72</pointsize>
       <italic>true</italic>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255,255,255,178);
+border-radius: 10px;</string>
     </property>
     <property name="text">
      <string>Kateflame</string>
@@ -213,6 +221,26 @@
      </item>
     </layout>
    </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>-10</y>
+      <width>821</width>
+      <height>621</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../mineralkosm2.jpg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>label_4</zorder>
    <zorder>layoutWidget</zorder>
    <zorder>label_3</zorder>
    <zorder>verticalLayoutWidget</zorder>
