@@ -190,7 +190,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Balance :</string>
+           <string>Bonus:</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>

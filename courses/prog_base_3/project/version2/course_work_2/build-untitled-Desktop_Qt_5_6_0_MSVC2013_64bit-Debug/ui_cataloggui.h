@@ -63,6 +63,7 @@ public:
         CatalogGUI->setSizePolicy(sizePolicy);
         CatalogGUI->setMinimumSize(QSize(800, 600));
         CatalogGUI->setMaximumSize(QSize(800, 600));
+        CatalogGUI->setFocusPolicy(Qt::TabFocus);
         sTable = new QTabWidget(CatalogGUI);
         sTable->setObjectName(QStringLiteral("sTable"));
         sTable->setGeometry(QRect(20, 60, 761, 521));
@@ -210,7 +211,7 @@ public:
         hairSearchButton->setText(QApplication::translate("CatalogGUI", "Search", 0));
         sTable->setTabText(sTable->indexOf(hairTab), QApplication::translate("CatalogGUI", "\320\224\320\276\320\263\320\273\321\217\320\264 \320\267\320\260 \320\262\320\276\320\273\320\276\321\201\321\201\321\217\320\274", 0));
         personalOfficeButton->setText(QApplication::translate("CatalogGUI", "Personal", 0));
-        bucketButton->setText(QApplication::translate("CatalogGUI", "Bucket 0", 0));
+        bucketButton->setText(QApplication::translate("CatalogGUI", "Bucket", 0));
         label->setText(QApplication::translate("CatalogGUI", "<A HREF='https://vk.com/katelevoshko'>Developer</A>", 0));
     } // retranslateUi
 

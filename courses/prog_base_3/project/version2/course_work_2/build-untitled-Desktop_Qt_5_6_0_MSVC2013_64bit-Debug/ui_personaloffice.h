@@ -56,7 +56,7 @@ public:
         PersonalOffice->setSizePolicy(sizePolicy);
         PersonalOffice->setMinimumSize(QSize(800, 600));
         PersonalOffice->setMaximumSize(QSize(800, 600));
-        PersonalOffice->setAcceptDrops(false);
+        PersonalOffice->setFocusPolicy(Qt::TabFocus);
         label = new QLabel(PersonalOffice);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(200, -10, 411, 111));
@@ -184,7 +184,7 @@ public:
         label_3->setText(QApplication::translate("PersonalOffice", "Surname:", 0));
         label_5->setText(QApplication::translate("PersonalOffice", "Phone:", 0));
         label_6->setText(QString());
-        label_4->setText(QApplication::translate("PersonalOffice", "Balance :", 0));
+        label_4->setText(QApplication::translate("PersonalOffice", "Bonus :", 0));
         nameLabel->setText(QString());
         surnameLabel->setText(QString());
         phoneLabel->setText(QString());

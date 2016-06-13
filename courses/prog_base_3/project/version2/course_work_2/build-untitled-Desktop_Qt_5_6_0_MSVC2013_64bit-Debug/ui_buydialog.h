@@ -44,6 +44,7 @@ public:
         BuyDialog->setSizePolicy(sizePolicy);
         BuyDialog->setMinimumSize(QSize(300, 180));
         BuyDialog->setMaximumSize(QSize(300, 180));
+        BuyDialog->setFocusPolicy(Qt::TabFocus);
         nameLabel = new QLabel(BuyDialog);
         nameLabel->setObjectName(QStringLiteral("nameLabel"));
         nameLabel->setGeometry(QRect(60, 10, 231, 31));

@@ -57,6 +57,7 @@ public:
         Registration->setSizePolicy(sizePolicy);
         Registration->setMinimumSize(QSize(800, 600));
         Registration->setMaximumSize(QSize(800, 600));
+        Registration->setFocusPolicy(Qt::TabFocus);
         label = new QLabel(Registration);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(160, 0, 501, 111));
