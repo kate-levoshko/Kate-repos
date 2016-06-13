@@ -36,10 +36,8 @@ void BuyDialog::on_countSpinBox_valueChanged(int arg1)
 void BuyDialog::on_buyButton_clicked()
 {
     pr->setCount(ui->countSpinBox->value());
-    qDebug() << ui->countSpinBox->value();
     pr->setPrice(pr->getPrice()*pr->getCount());
     Bucket* bk = Bucket::getInstance();
     bk->addProduct(pr);
-    qDebug() << bk->getSize();
     this->close();
 }

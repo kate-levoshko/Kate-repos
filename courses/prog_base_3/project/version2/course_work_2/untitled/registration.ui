@@ -28,6 +28,9 @@
     <height>600</height>
    </size>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::TabFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>Kateframe</string>
   </property>

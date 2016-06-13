@@ -5,6 +5,7 @@
 #include "QMessageBox"
 #include "product.h"
 #include "buydialog.h"
+#include "bucket.h"
 
 CatalogGUI::CatalogGUI(QWidget *parent) :
     QWidget(parent),

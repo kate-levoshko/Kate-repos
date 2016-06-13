@@ -28,6 +28,9 @@
     <height>180</height>
    </size>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::TabFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>

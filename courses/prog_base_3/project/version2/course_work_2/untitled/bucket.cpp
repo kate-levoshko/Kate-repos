@@ -16,12 +16,11 @@ Bucket::Bucket(){
  }
 
  int Bucket::getSize(){
-     int size = 0;
-     for(std::vector<Product*>::iterator it = bk.begin(); it != bk.end();){
-         size += (*it)->getCount();
-        ++it;
-     }
-     return size;
+     return bk.size();
+ }
+
+ Product* Bucket::getProduct(int index){
+     return bk[index];
  }
 
  void Bucket::cleanBucket(){
