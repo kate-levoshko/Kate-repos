@@ -10,30 +10,28 @@
 #include <ctype.h>
 
 
-int getString(char * str){
-	char * end;
-	int it = 0;
-	int sum = 0;
-	for (int i = 0; i < strlen(str); i++){
-		if (isdigit(str[i])) it++;
-	}
-	/*for (int i = 0; i < it; i++){
-		sum
-	}*/
+int getString(char str[6]){
+		int mas[30]; // массив чисел
+		int N = 0; // количество чисел
+		int sum = 0;
+		char * end;
 
-	while (strtol(str, &end, 10) != 0){
-		sum += strtol(str, &end, 10);
-		strtol(&end, NULL, 10);
-	}
-	
-	return sum;
+		int p = strtol(str, &end, 10);
+		mas[N++] = p;
+		while (p = strtol(&end, NULL,0))
+			mas[N++] = p;
+
+		for (int i = 0; i < N; i++){
+			sum += mas[i];
+		}
+			
+		return sum;
 }
-
-
-
-int main(void){
-
-	int func = getString("    1     ,    2   ,   3  ,   4   ");
+	
+int main()
+{
+	int func = getString("1, 0,3");
+		
 	printf("%d", func);
 	getchar();
 	return 0;
