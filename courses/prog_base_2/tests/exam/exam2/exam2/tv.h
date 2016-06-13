@@ -1,45 +1,42 @@
-#define _CRT_SECURE_NO_WARNINGS
 #pragma once
+#define _CRT_SECURE_NO_WARNINGS
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "list.h"
 
-#define MAX_AMOUNT_OF_VIDEO 100
-
 typedef struct tv_s tv_t;
+typedef struct viewer_s viewer_t;
 typedef struct video_s video_t;
-typedef struct listener_s listener_t;
 
-
-enum RadioError{
-	RADIO_OK,
-	RADIO_ERROR
+enum VideoStatus{
+	FILM,
+	ADVERTISEMENT
 };
 
-enum RadioState{
-	RADIO_WORK,
-	RADIO_PAUSE
+enum ViewerStatus{
+	ACTIVE,
+	PASSIVE
 };
 
-track_t radio_newTrack(void);
 
-trackList_t * radio_newTrackList(int capacity);
+tv_t * tv_new();
+viewer_t * tv_newViewer(tv_t * self, char * name, enum ViewerStatus type);
+video_t * tv_newVideo(enum VideoStatus type, char * name);
+void tv_free(tv_t * self);
+void tv_freeViewer(viewer_t * self);
+void tv_freeVideo(video_t * self);
 
-void radio_trackListFree(trackList_t * self);
 
-radio_t * radio_new(void);
+void tv_addVideo(tv_t * self, video_t * video);
+video_t * tv_getCurVideoInf(tv_t * self, video_t * copy);
+void tv_deleteVideo(tv_t * self, int index);
+list_t * tv_getVideoList(tv_t * self);
 
-void radio_free(radio_t * radio);
 
-enum RadioError radio_getStatus(radio_t * radio);
-enum RadioState radio_getState(radio_t * radio);
-int radio_getNumOfTracks(trackList_t * trackList);
-void radio_changeName(radio_t * radio, char * name);
+int tv_getAmountOfVideos(tv_t * self);
+void tv_addViewer(tv_t *self, viewer_t * view);
+void tv_deleteViewer(tv_t * self, int index);
+int tv_getViewerTypeCount(tv_t * self);
 
-char * radio_getName(radio_t * radio);
-void radio_addTrack(trackList_t * self, track_t data);
-void radio_trackDelete(trackList_t * self, int index);
+enum VideoStatus tv_getVideoType(video_t * video);
+enum ViewerStatus tv_getViewerType(viewer_t * viewer);
 
-int radio_length(trackList_t * self);
