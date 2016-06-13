@@ -17,6 +17,7 @@ public:
 
 private slots:
     void on_registerButton_clicked();
+    bool Registration::isCorrectData();
 
 private:
     Ui::Registration *ui;

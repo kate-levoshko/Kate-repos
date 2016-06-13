@@ -2,6 +2,9 @@
 #include "ui_bucketgui.h"
 #include "cataloggui.h"
 #include "bucket.h"
+#include "database.h"
+#include <QTextDocument>
+#include <QtPrintSupport/QPrinter>
 
 BucketGUI::BucketGUI(QWidget *parent) :
     QWidget(parent),
@@ -9,10 +12,7 @@ BucketGUI::BucketGUI(QWidget *parent) :
 {
     ui->setupUi(this);
     Bucket* bk = Bucket::getInstance();
-    ui->buyTable->setRowCount(bk->getSize());
-    QStringList l;
-    l << "Name" <<"Price" << "Count";
-    ui->buyTable->setHorizontalHeaderLabels(l);
+    init();
     QTableWidgetItem* item1 = new QTableWidgetItem();
     QTableWidgetItem* item2 = new QTableWidgetItem();
     QTableWidgetItem* item3 = new QTableWidgetItem();
@@ -39,6 +39,13 @@ BucketGUI::~BucketGUI()
     delete ui;
 }
 
+void BucketGUI::init(){
+    QStringList l;
+    l << "Name" <<"Price" << "Count";
+    ui->buyTable->setHorizontalHeaderLabels(l);
+    ui->buyTable->setRowCount(Bucket::getInstance()->getSize());
+}
+
 void BucketGUI::on_backButton_clicked()
 {
     CatalogGUI* w = new CatalogGUI();
@@ -50,9 +57,24 @@ void BucketGUI::on_cleanButton_clicked()
 {
     Bucket::getInstance()->cleanBucket();
     ui->buyTable->clear();
-    QStringList l;
-    l << "Name" <<"Price" << "Count";
-    ui->buyTable->setHorizontalHeaderLabels(l);
-    ui->buyTable->setRowCount(Bucket::getInstance()->getSize());
+    init();
+}
 
+void BucketGUI::on_buyButton_clicked()
+{
+    DataBase* db = new DataBase();
+    db->connectToDataBase();
+
+    Bucket* bk = Bucket::getInstance();
+    Product* pr;
+    for(int i = 0; i < bk->getSize(); i++){
+        pr = bk->getProduct(i);
+        db->update(pr->getName(), pr->getCount(), pr->getPrice());
+    }
+
+    Bucket::getInstance()->cleanBucket();
+    ui->buyTable->clear();
+    init();
+
+    db->closeDataBase();
 }

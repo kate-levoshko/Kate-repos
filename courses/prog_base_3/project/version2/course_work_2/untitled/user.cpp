@@ -1,11 +1,16 @@
 #include "user.h"
 #include "cstring"
 
-User::User(QString name, QString surname, QString phone_number, QString balance){
+User::User(QString login, QString name, QString surname, QString phone_number, QString bonus){
+    this->login = login;
     this->name = name;
     this->surname = surname;
     this->phone_number = phone_number;
-    this->balance = balance;
+    this->bonus = bonus;
+}
+
+QString User::getLogin(){
+    return login;
 }
 
 QString User::getName(){
@@ -20,6 +25,10 @@ QString User::getPhoneNumber(){
     return phone_number;
 }
 
-QString User::getBalance(){
-    return balance;
+QString User::getBonus(){
+    return bonus;
+}
+
+void User::setBonus(QString bonus){
+    this->bonus = bonus;
 }

@@ -6,19 +6,20 @@
 class User
 {
 public:
-    User(QString name, QString surname, QString phone_number, QString balance);
+    User(QString login,QString name, QString surname, QString phone_number, QString bonus);
+    QString getLogin();
     QString getName();
     QString getSurname();
     QString getPhoneNumber();
-    QString getBalance();
+    QString getBonus();
+    void setBonus(QString bonus);
 
 private:
+    QString login;
     QString name;
     QString surname;
     QString phone_number;
-    QString balance;
-
-    //Bucket *bucket;
+    QString bonus;
 };
 
 #endif // USER_H

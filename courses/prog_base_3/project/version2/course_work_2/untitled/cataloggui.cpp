@@ -6,6 +6,7 @@
 #include "product.h"
 #include "buydialog.h"
 #include "bucket.h"
+#include <QSortFilterProxyModel>
 
 CatalogGUI::CatalogGUI(QWidget *parent) :
     QWidget(parent),
@@ -22,7 +23,6 @@ CatalogGUI::CatalogGUI(QWidget *parent) :
 
     qry->exec("SELECT product_name,price,count FROM PRODUCTS WHERE type = 'cosmetic'");
     model->setQuery(*qry);
-
     ui->decCosmeticsTable->setModel(model);
     db->closeDataBase();
 }

@@ -4,6 +4,7 @@
 #include "personaloffice.h"
 #include "cataloggui.h"
 #include "database.h"
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -27,7 +28,7 @@ void MainWindow::on_singInButton_clicked()
         w->show();
         db->closeDataBase();
     } else {
-        //Error
+        QMessageBox::warning(this, tr("Error") ,tr("Неверное имя пользователя или пароль!"));
     }
 }
 

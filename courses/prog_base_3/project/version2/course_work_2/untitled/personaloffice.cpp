@@ -14,7 +14,7 @@ PersonalOffice::PersonalOffice(QWidget *parent) :
     ui->nameLabel->setText(current_user->getName());
     ui->surnameLabel->setText(current_user->getSurname());
     ui->phoneLabel->setText(current_user->getPhoneNumber());
-    ui->balanceLabel->setText(current_user->getBalance() + "$");
+    ui->balanceLabel->setText(current_user->getBonus()+"$");
 }
 
 PersonalOffice::~PersonalOffice()
